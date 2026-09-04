@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<script src="support.js"></script>
+</head>
+<body>
+
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+  body { margin: 0; background: #fff; font-family: "Lato", sans-serif; }
+  x-dc > section { padding: 0 !important; gap: 0 !important; }
+  a { color: #2E3C61; text-decoration: none; }
+  a:hover { color: #4A5C8C; }
+  html { scroll-behavior: smooth; }
+  @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes dashPan { 0%,8% { transform: translateY(0); } 45%,55% { transform: translateY(-67%); } 92%,100% { transform: translateY(0); } }
+  @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 rgba(46,60,97,.35); } 70% { box-shadow: 0 0 0 14px rgba(46,60,97,0); } 100% { box-shadow: 0 0 0 0 rgba(46,60,97,0); } }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @keyframes drawPath { to { stroke-dashoffset: 0; } }
+  @keyframes softDrift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @keyframes snapIn { 0%, 6% { transform: translateX(var(--dx)) rotate(var(--rot)); opacity: .28; } 34%, 88% { transform: none; opacity: 1; } 100% { transform: translateX(var(--dx)) rotate(var(--rot)); opacity: .28; } }
+  @keyframes ringWaveL { 0% { transform: scale(1); opacity: .55; } 100% { transform: scale(9); opacity: 0; } }
+  @keyframes glowSoft { 0%,100% { opacity: .6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+  @keyframes blobTurn { to { transform: rotate(360deg); } }
+  @keyframes blobBreathe { 0%,100% { border-radius: 58% 42% 48% 52%/44% 56% 44% 56%; } 50% { border-radius: 44% 56% 56% 44%/56% 44% 56% 44%; } }
+  @keyframes scanDrift { to { transform: translateY(10px); } }
+  @keyframes riseSoft { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes washA { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-42px,26px) scale(1.12); } }
+  @keyframes washB { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(38px,-30px) scale(1.08); } }
+  @keyframes washC { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-24px,-34px) scale(1.14); } }
+  @keyframes hairSlide { 0% { transform: translateY(-100%); opacity: 0; } 12%,70% { opacity: .9; } 100% { transform: translateY(100%); opacity: 0; } }
+  @keyframes barFloat { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(var(--fx, 4px), var(--fy, -5px)); } }
+  @keyframes caretBlink { 0%,45% { opacity: 1; } 55%,100% { opacity: .12; } }
+  @keyframes frameFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  @keyframes blockResolve { 0%,40% { background: #E4E9F2; } 55%,95% { background: #2E3C61; } 100% { background: #E4E9F2; } }
+  @keyframes barGrow { 0% { transform: scaleY(.18); } 100% { transform: scaleY(1); } }
+  @keyframes barBreathe { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(.72); } }
+  @keyframes trackFill { 0% { width: 0; } 100% { width: var(--w, 60%); } }
+  @keyframes sweepLine { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+  @keyframes pulseRingLight { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.3); } 70% { box-shadow: 0 0 0 14px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
+</style>
+
+</helmet>
+
+<section style="display:flex;flex-direction:column;gap:64px;padding:56px 48px 120px">
+
+  <!-- ============ PAGE 1 : HOME ============ -->
+  <div data-view="home" style="display:flex;flex-direction:column;gap:16px">
+    <div style="width:1440px;max-width:100%;margin:0 auto;background:#fff;overflow:hidden">
+
+      <!-- nav -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 80px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);position:sticky;top:0;z-index:5;border-bottom:1px solid #EDF1F7">
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="assets/1220bfc6-b7ed-4699-a757-9a8706de9dd7.jpg" alt="Angela Piazza" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:1px solid #D6DDE8">
+          <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:17px;color:#1C1F26;letter-spacing:-0.01em">Angela Piazza</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:36px;font-size:15px;color:#4A5C8C">
+          <span data-nav="home" role="button" tabindex="0" style="color:#2E3C61;font-weight:600;cursor:pointer">Home</span><span data-nav="work" role="button" tabindex="0" style="cursor:pointer;transition:color .2s ease" style-hover="color:#2E3C61">My Work</span>
+          <span data-contact-open="1" role="button" tabindex="0" style="background:#2E3C61;color:#fff;padding:8px 16px;border-radius:4px;font-weight:600;font-size:14px;font-family:'Montserrat',sans-serif;cursor:pointer;transition:background .25s ease" style-hover="background:#3A4A75">Contact me</span>
+        </div>
+      </div>
+
+      
+
+      <!-- hero -->
+      <div style="background:#fff;position:relative;overflow:hidden">
+        <div style="position: relative; display: grid; grid-template-columns: 56px minmax(0,1fr); gap: 26px; align-items: center; padding: 96px 80px 88px; overflow: hidden; isolation: isolate; width: 1283px; height: 313px">
+          <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0">
+            <div style="position:absolute;left:-90px;top:-140px;width:640px;height:520px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(99,118,168,.12) 0%,rgba(99,118,168,0) 68%);filter:blur(6px);animation:washA 26s ease-in-out infinite"></div>
+            <div style="position:absolute;right:-120px;top:-60px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle at 55% 45%,rgba(46,60,97,.09) 0%,rgba(46,60,97,0) 66%);filter:blur(8px);animation:washB 32s ease-in-out infinite"></div>
+            <div style="position:absolute;right:120px;bottom:-220px;width:520px;height:420px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(140,155,191,.12) 0%,rgba(140,155,191,0) 70%);filter:blur(8px);animation:washC 29s ease-in-out infinite"></div>
+            <div style="position:absolute;inset:0;overflow:hidden;opacity:.5"><div style="position:absolute;left:16%;top:0;width:1px;height:100%;background:linear-gradient(#fff 0%,#C7D1E2 42%,#C7D1E2 58%,#fff 100%);animation:hairSlide 9s cubic-bezier(.5,0,.5,1) 0s infinite"></div><div style="position:absolute;left:31%;top:0;width:1px;height:100%;background:linear-gradient(#fff 0%,#C7D1E2 42%,#C7D1E2 58%,#fff 100%);animation:hairSlide 13s cubic-bezier(.5,0,.5,1) 2.4s infinite"></div><div style="position:absolute;left:54%;top:0;width:1px;height:100%;background:linear-gradient(#fff 0%,#C7D1E2 42%,#C7D1E2 58%,#fff 100%);animation:hairSlide 11s cubic-bezier(.5,0,.5,1) 1.2s infinite"></div><div style="position:absolute;left:69%;top:0;width:1px;height:100%;background:linear-gradient(#fff 0%,#C7D1E2 42%,#C7D1E2 58%,#fff 100%);animation:hairSlide 15s cubic-bezier(.5,0,.5,1) 4.1s infinite"></div><div style="position:absolute;left:86%;top:0;width:1px;height:100%;background:linear-gradient(#fff 0%,#C7D1E2 42%,#C7D1E2 58%,#fff 100%);animation:hairSlide 12s cubic-bezier(.5,0,.5,1) 3.2s infinite"></div></div>
+          </div>
+          <div style="position:relative;z-index:1;height:420px;animation:riseSoft 1.1s cubic-bezier(.22,.61,.36,1) both">
+            <div data-cuewrap="1" style="position: absolute; left: -128px; top: 162px; margin-top: -200px; width: 216px; height: 355px">
+              <div style="position: absolute; left: -90px; top: 50px; width: 260px; height: 300px; border-radius: 50%; animation: glowSoft 12s ease-in-out infinite; background-color: #0F0C0800"></div>
+              <div data-cue="0" title="the problem hasn’t been defined yet." style="--fx: 5px; --fy: -4px; position: absolute; left: -40px; top: 84px; width: 150px; height: 16px; border-radius: 3px; background: #D6DDE8; transform: rotate(-2.6deg); cursor: pointer; transition: background .6s ease; animation: barFloat 13s ease-in-out 0.0s infinite"></div>
+              <div data-cue="1" title="the product got too complex to move fast." style="--fx:-4px;--fy:4px;position:absolute;left:-70px;top:124px;width:190px;height:16px;border-radius:3px;background:#D6DDE8;transform:rotate(1.8deg);cursor:pointer;transition:background .6s ease;animation:barFloat 11s ease-in-out 1.3s infinite"></div>
+              <div data-cue="2" title="design and AI must work as one process." style="--fx: 4px; --fy: 5px; position: absolute; left: -30px; top: 172px; width: 120px; height: 16px; border-radius: 3px; background: #D6DDE8; transform: rotate(-1.4deg); cursor: pointer; transition: background .6s ease; animation: barFloat 14s ease-in-out 2.6s infinite"></div>
+              <div data-cue="3" title="the team needs direction, not a redesign." style="--fx: -5px; --fy: -4px; position: absolute; left: -58px; top: 218px; width: 192px; height: 16px; border-radius: 3px; background: #D6DDE8; transform: rotate(2.2deg); cursor: pointer; transition: background .6s ease; animation: barFloat 12s ease-in-out 3.9s infinite"></div>
+              <div data-cue="4" title="decisions need something measurable behind them." style="--fx: 4px; --fy: -5px; position: absolute; left: -48px; top: 270px; width: 148px; height: 16px; border-radius: 3px; background: #D6DDE8; transform: rotate(-2deg); cursor: pointer; transition: background .6s ease; animation: barFloat 15s ease-in-out 5.2s infinite"></div>
+            </div>
+          </div><div style="position: absolute; z-index: 1; width: 1153px; height: 304px; left: 172px; top: 103px">
+            <div style="display:flex;align-items:center;gap:11px;margin-bottom:30px;animation:riseSoft .9s cubic-bezier(.22,.61,.36,1) both">
+              <span style="width:6px;height:6px;border-radius:50%;background:#4A5C8C;animation:caretBlink 2.6s ease-in-out infinite"></span>
+              <span style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#8C9BBF">Portfolio 2026</span>
+            </div>
+            <h2 style="margin:0;font-family:'Montserrat',sans-serif;font-size:40px;line-height:1.14;font-weight:700;letter-spacing:-0.03em;color:#1C1F26;text-wrap:pretty">
+              <span style="display:block;animation:riseSoft .9s cubic-bezier(.22,.61,.36,1) .1s both">I’m the designer you bring in when</span>
+              <span style="display:block;position:relative;height:52px;margin-top:6px">
+                <span data-cueline="0" style="position:absolute;left:0;top:0;white-space:nowrap;color:#4A5C8C;opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)">the problem hasn’t been defined yet.</span>
+                <span data-cueline="1" style="position:absolute;left:0;top:0;white-space:nowrap;color:#4A5C8C;opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)">the product got too complex to move fast.</span>
+                <span data-cueline="2" style="position:absolute;left:0;top:0;white-space:nowrap;color:#4A5C8C;opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)">design and AI must work as one process.</span>
+                <span data-cueline="3" style="position:absolute;left:0;top:0;white-space:nowrap;color:#4A5C8C;opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)">the team needs direction, not a redesign.</span>
+                <span data-cueline="4" style="position:absolute;left:0;top:0;white-space:nowrap;color:#4A5C8C;opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)">decisions need something measurable behind them.</span>
+              </span>
+            </h2>
+            <p style="margin:26px 0 0;font-size:18px;line-height:1.6;color:#3F4652;max-width:680px;text-wrap:pretty;animation:riseSoft .9s cubic-bezier(.22,.61,.36,1) .3s both">UX/UI Design Lead with three years of end-to-end experience across complex products, blending human judgement and AI into one hybrid design process.</p>
+            <div style="display:flex;gap:14px;margin-top:36px;align-items:center;animation:riseSoft .9s cubic-bezier(.22,.61,.36,1) .42s both">
+              <a href="#work-page" style="display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid #D6DDE8;color:#1C1F26;padding:8px 16px;border-radius:4px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:15px">Explore my work
+                <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+              </a>
+            </div>
+          </div><div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; width: 1440px; height: 499px">
+            <div style="position: absolute; left: -90px; top: -140px; width: 640px; height: 520px; border-radius: 50%; filter: blur(6px); animation: washA 26s ease-in-out infinite; background-color: #0F0C0800"></div>
+            <div style="position: absolute; right: -120px; top: -60px; width: 560px; height: 560px; border-radius: 50%; filter: blur(8px); animation: washB 32s ease-in-out infinite; background-color: #0F0C0800"></div>
+            <div style="position: absolute; right: 120px; bottom: -220px; width: 520px; height: 420px; border-radius: 50%; filter: blur(8px); animation: washC 29s ease-in-out infinite; background-color: #0F0C0800"></div>
+            <div style="position: absolute; inset: 0; overflow: hidden; opacity: .5; width: 1435px; height: 491px"></div>
+          </div>
+          
+          
+        </div>
+        
+        <div style="position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #D6DDE8;margin:0 80px;padding:26px 0 34px;gap:32px">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#4A5C8C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px;flex:none"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"></path><circle cx="12" cy="10" r="2.4"></circle></svg>
+            <div><div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8C9BBF;font-family:'Montserrat',sans-serif;font-weight:600;margin-bottom:4px">Based</div><div style="font-size:16px;color:#1C1F26">Schio, Italy — open to relocate</div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#4A5C8C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px;flex:none"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"></path></svg>
+            <div><div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8C9BBF;font-family:'Montserrat',sans-serif;font-weight:600;margin-bottom:4px">Now</div><div style="font-size:16px;color:#1C1F26">UX/UI Design Lead at NiEW</div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#4A5C8C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px;flex:none"><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="3.6"></circle></svg>
+            <div><div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8C9BBF;font-family:'Montserrat',sans-serif;font-weight:600;margin-bottom:4px">MINDSET</div><div style="font-size:16px;color:#1C1F26">Navigate complexity</div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="#4A5C8C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px;flex:none"><path d="M12 3l1.9 5.3L19 10l-5.1 1.7L12 17l-1.9-5.3L5 10l5.1-1.7z"></path><path d="M18.5 16.5l.7 1.9 1.8.6-1.8.6-.7 1.9-.7-1.9-1.8-.6 1.8-.6z"></path></svg>
+            <div><div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8C9BBF;font-family:'Montserrat',sans-serif;font-weight:600;margin-bottom:4px">Approach</div><div style="font-size:16px;color:#1C1F26">I design with AI, not next to it</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- capability strip -->
+      <div style="display: flex; align-items: center; gap: 9px; flex-wrap: nowrap; padding: 26px 80px; border-bottom: 1px solid #EDF1F7; width: 1278px; height: 58px">
+        <span style="font-family: 'Montserrat',sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #8C9BBF; margin-right: 6px; white-space: nowrap">Working across</span>
+        <span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;color:#2E3C61;border:1px solid #D6DDE8;border-radius:100px;padding:7px 13px;white-space:nowrap;flex:0 0 auto">
+          <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><path d="M17.5 14v7M14 17.5h7"></path></svg> Complexity into structure</span>
+        <span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;color:#2E3C61;border:1px solid #D6DDE8;border-radius:100px;padding:7px 13px;white-space:nowrap;flex:0 0 auto">
+          <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9M9 20V5M14 20v-8M19 20V8"></path><path d="M3 20h18"></path></svg> Industrial domain fluency</span>
+        <span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;color:#2E3C61;border:1px solid #D6DDE8;border-radius:100px;padding:7px 13px;white-space:nowrap;flex:0 0 auto">
+          <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 00-4 4c-1.7.7-2.8 2.3-2.8 4.2 0 1.4.6 2.6 1.6 3.5-.2 2 1.4 3.8 3.5 3.8h1.7"></path><path d="M12 3a4 4 0 014 4c1.7.7 2.8 2.3 2.8 4.2 0 1.4-.6 2.6-1.6 3.5.2 2-1.4 3.8-3.5 3.8H12"></path><path d="M12 3v18"></path></svg> Hybrid intelligence</span>
+        <span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;color:#2E3C61;border:1px solid #D6DDE8;border-radius:100px;padding:7px 13px;white-space:nowrap;flex:0 0 auto">
+          <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"></path></svg> Cross-cultural research</span><span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;color:#2E3C61;border:1px solid #D6DDE8;border-radius:100px;padding:7px 13px;white-space:nowrap;flex:0 0 auto">
+          <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.3 7.9-8 9-4.7-1.1-8-4.5-8-9V7z"></path><path d="M9 12l2.2 2.2L15.5 10"></path></svg> Craft standards &amp; mentoring</span>
+        
+        </div>
+
+      <!-- what I do -->
+      <div style="background:#EDF1F7;padding:88px 80px;position:relative;overflow:hidden">
+        <div style="position: absolute; right: -100px; top: -100px; width: 300px; height: 300px; border-radius: 50%; background: linear-gradient(200deg, rgb(222, 229, 240), rgb(232, 237, 245));"></div>
+        
+        <div style="position: relative; font-family: 'Montserrat',sans-serif; font-size: 16px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #4A5C8C; margin-bottom: 44px">My values</div>
+        <div style="position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px">
+          <div style="border-top:2px solid #2E3C61;padding-top:24px">
+            <div style="width:44px;height:44px;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+              <svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="#2E3C61" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"></path><path d="M4 14l5-5 4 3.5L20 5"></path><path d="M15.5 5H20v4.5"></path></svg>
+            </div>
+            <h3 style="margin:0 0 12px;font-family:'Montserrat',sans-serif;font-size:23px;font-weight:600;color:#1C1F26;letter-spacing:-0.01em">Natural bar raiser</h3>
+            <p style="margin:0;font-size:17px;line-height:1.6;color:#3F4652;text-wrap:pretty">I never stop at "good enough". Before anything ships, I ask one question: is this really the best we could do? <br>Not to criticise the work, but to make it better.</p>
+          </div>
+          <div style="border-top:2px solid #2E3C61;padding-top:24px">
+            <div style="width:44px;height:44px;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+              <svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="#2E3C61" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.4"></circle><path d="M12 4V2M12 22v-2M4 12H2M22 12h-2"></path></svg>
+            </div>
+            <h3 style="margin:0 0 12px;font-family:'Montserrat',sans-serif;font-size:23px;font-weight:600;color:#1C1F26;letter-spacing:-0.01em">Outcome driven</h3>
+            <p style="margin:0;font-size:17px;line-height:1.6;color:#3F4652;text-wrap:pretty">Delivering a file isn't the goal, but changing something for users and the business is. I judge my work by the value it produces, not by the effort it took to get there.</p>
+          </div>
+          <div style="border-top:2px solid #2E3C61;padding-top:24px">
+            <div style="width:44px;height:44px;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+              <svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="#2E3C61" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19a5.5 5.5 0 0111 0M16 6.2a3.2 3.2 0 010 6M17.5 19a5.4 5.4 0 00-2-4.2"></path></svg>
+            </div>
+            <h3 style="margin:0 0 12px;font-family:'Montserrat',sans-serif;font-size:23px;font-weight:600;color:#1C1F26;letter-spacing:-0.01em">Collective belief</h3>
+            <p style="margin:0;font-size:17px;line-height:1.6;color:#3F4652;text-wrap:pretty">A team gets further than any one person. Collaboration doesn't dilute what I bring, it multiplies it. <br>I see collaboration as the way of working, not a nice extra.</p>
+          </div>
+          <div style="border-top:2px solid #2E3C61;padding-top:24px">
+            <div style="width:44px;height:44px;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+              <svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="#2E3C61" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c3.6 0 6-2.4 6-5.6 0-4-3.2-5.6-3.2-8.8C13.2 7.6 12 9.6 12 11c-1.2-.8-1.6-2.4-1.6-4C8 8.8 6 11.6 6 15.4 6 18.6 8.4 21 12 21z"></path></svg>
+            </div>
+            <h3 style="margin:0 0 12px;font-family:'Montserrat',sans-serif;font-size:23px;font-weight:600;color:#1C1F26;letter-spacing:-0.01em">Inner drive</h3>
+            <p style="margin:0;font-size:17px;line-height:1.6;color:#3F4652;text-wrap:pretty">I don't wait to be motivated. I look for the harder problem on my own, because that's where I learn fastest. <br>Ambition pointed at the work, not at recognition.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- selected work -->
+      <div style="padding: 96px 80px 40px; width: 1272px; position: relative; padding-bottom: 0px; height: 2849px">
+        <div style="margin-bottom:56px">
+          
+        <h2 style="margin: 0; font-family: 'Montserrat',sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: #4A5C8C; text-transform: uppercase">Selected work</h2></div>
+
+        <div style="display:flex;flex-direction:column;gap:28px">
+
+          <div style="display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center; border-top: 1px solid #D6DDE8; padding-top: 16px; width: 1286px; height: 462px; padding-bottom: 16px">
+            <div>
+              <div style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:600;color:#8C9BBF;letter-spacing:.06em;margin-bottom:16px">01</div>
+              <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px"><h3 style="margin: 0 0 14px; font-family: 'Montserrat',sans-serif; font-size: 30px; font-weight: 600; letter-spacing: -0.02em; color: #1C1F26">A new Service Platform - from on field research in China to the final UI</h3></div>
+              <p style="margin:0 0 22px;font-size:17px;line-height:1.6;color:#3F4652">An industrial manufacturer's services were scattered across the business and invisible to its customers. Around 1,000 field interviews laid the groundwork for a structured dataset, later synthesised into a service journey the client adopted as its own decision-making tool. From this, a new Service Platform was designed as a selling tool for their services, built across four sprints around 20 features carefully prioritised from the research findings.</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px">
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">International Markets</span>
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">Service Mapping</span>
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">AI - Data Structuring</span>
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">End-to-end UI</span>
+              </div>
+              <a href="#case-01" style="display:inline-flex;align-items:center;gap:6px;color:#4A5C8C;padding:8px 16px;margin-left:-16px;border-radius:4px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:14px">View project →</a>
+            </div>
+            <div data-fan="1" style="position:relative;height:400px">
+              <div style="position:absolute;left:16%;top:0;width:84%;z-index:1;border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 18px 44px -30px rgba(28,31,38,.5);transition:transform .4s ease,box-shadow .4s ease" style-hover="transform:translateY(-6px);box-shadow:0 26px 54px -30px rgba(28,31,38,.6)"><img src="assets/1f5f58ec-b2d3-443e-b4be-ce3bbc822edb.png" alt="Spare parts marketplace, anonymised" style="display:block;width:100%;height:auto;opacity:0.5"></div>
+              <div style="position:absolute;left:8%;top:36px;width:84%;z-index:2;border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 18px 44px -30px rgba(28,31,38,.5);transition:transform .4s ease,box-shadow .4s ease" style-hover="transform:translateY(-6px);box-shadow:0 26px 54px -30px rgba(28,31,38,.6)"><img src="assets/c084ee6c-79a8-441c-a708-5887b4f7b888.png" alt="Downtime event logger, anonymised" style="display:block;width:100%;height:auto;opacity:0.75"></div>
+              <div style="position:absolute;left:0;top:72px;width:84%;z-index:3;border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 18px 44px -30px rgba(28,31,38,.5);transition:transform .4s ease,box-shadow .4s ease" style-hover="transform:translateY(-6px);box-shadow:0 26px 54px -30px rgba(28,31,38,.6)"><img src="assets/98bd6a47-15a8-4d76-9339-a8d25fc82aa3.png" alt="Performance monitoring dashboard, anonymised" style="display:block;width:100%;height:auto;opacity:1"></div>
+              <div style="position:absolute;right:0;bottom:-10px;width:15%;z-index:4;border:1px solid #D6DDE8;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 22px 48px -26px rgba(28,31,38,.6);transition:transform .4s ease" style-hover="transform:translateY(-6px)"><img src="assets/d73a5cc4-f46e-4957-95a5-1aa6bfc9f8f9.png" alt="Technician app, anonymised" style="display:block;width:100%;height:auto"></div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; border-top: 1px solid #D6DDE8; padding-top: 16px; width: 1284px; height: 518px; padding-bottom: 16px">
+<div data-showcase="1" style="position:relative">
+              <div style="border-radius:12px;overflow:hidden;border:1px solid #D6DDE8;background:#fff;box-shadow:0 26px 56px -34px rgba(28,31,38,.45);transition:transform .4s ease,box-shadow .4s ease" style-hover="transform:translateY(-4px);box-shadow:0 32px 64px -32px rgba(28,31,38,.5)">
+                <div style="position:relative;height:372px;overflow:hidden;background:#fff">
+                  <div data-shot="1" style="position:absolute;inset:0;overflow:hidden">
+                    <div style="will-change:transform"><img src="assets/bd445673-6bb2-4d08-be45-ddf77c9fc2c5.png" alt="Plant configuration screen, anonymised" style="display:block;width:100%;height:auto"></div>
+                  </div>
+                  <div data-shot="1" style="position:absolute;inset:0;overflow:hidden">
+                    <div style="will-change:transform"><img src="assets/4dc7a2c6-2799-4eea-9fa4-912a49a6e232.png" alt="Mechanical KPI analytics dashboard, anonymised" style="display:block;width:100%;height:auto"></div>
+                  </div>
+                  <div data-shot="1" style="position:absolute;inset:0;overflow:hidden">
+                    <div style="will-change:transform"><img src="assets/428f0dc8-e6dc-4f6f-b066-e4e5cd1a5984.png" alt="Conceptual plant setup screen, anonymised" style="display:block;width:100%;height:auto"></div>
+                  </div>
+                  <div data-shot="1" data-pan="slow" style="position:absolute;inset:0;overflow:hidden">
+                    <div style="will-change:transform"><img src="assets/fdf00824-9b35-46d1-9159-d4040425790e.png" alt="Component documentation page, anonymised" style="display:block;width:100%;height:auto"></div>
+                  </div>
+                  
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:7px;margin-top:16px">
+                <div data-dot="1" role="button" tabindex="0" title="Plant configuration screen, anonymised" style="height:6px;width:30px;border-radius:6px;background:#2E3C61;cursor:pointer;transition:width .4s cubic-bezier(.22,.61,.36,1),background .4s ease"></div>
+                <div data-dot="1" role="button" tabindex="0" title="Mechanical KPI analytics dashboard, anonymised" style="height:6px;width:12px;border-radius:6px;background:#D6DDE8;cursor:pointer;transition:width .4s cubic-bezier(.22,.61,.36,1),background .4s ease"></div>
+                <div data-dot="1" role="button" tabindex="0" title="Conceptual plant setup screen, anonymised" style="height:6px;width:12px;border-radius:6px;background:#D6DDE8;cursor:pointer;transition:width .4s cubic-bezier(.22,.61,.36,1),background .4s ease"></div>
+                <div data-dot="1" role="button" tabindex="0" title="Component documentation page, anonymised" style="height:6px;width:12px;border-radius:6px;background:#D6DDE8;cursor:pointer;transition:width .4s cubic-bezier(.22,.61,.36,1),background .4s ease"></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:600;color:#8C9BBF;letter-spacing:.06em;margin-bottom:16px">02</div>
+              <h3 style="margin: 0 0 14px; font-family: 'Montserrat',sans-serif; font-size: 30px; font-weight: 600; letter-spacing: -0.02em; color: #1C1F26">A new Design System - from fragmented design to one coherent digital ecosystem</h3>
+              <p style="margin:0 0 22px;font-size:17px;line-height:1.6;color:#3F4652">Years of growth had left the product with no coherent design system — components duplicated, UX and UI fractured, design and development out of sync. The system was rebuilt from zero on shared foundations, new features were designed end to end across desktop, tablet and mobile, and the product's UX and UI were aligned with the client's other product into one coherent digital ecosystem.</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px">
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">Design System</span>
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">Project Ownership</span>
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">Cross-product alignment</span>
+                
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">Client Partnership</span>
+              </div>
+              <a href="#case-02" style="display:inline-flex;align-items:center;gap:6px;color:#4A5C8C;padding:8px 16px;margin-left:-16px;border-radius:4px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:14px">View project →</a>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; border-top: 1px solid #D6DDE8; padding-top: 16px; padding-bottom: 16px; width: 1280px; height: 505px">
+            <div>
+              <div style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:600;color:#8C9BBF;letter-spacing:.06em;margin-bottom:16px">03</div>
+              <h3 style="margin: 0 0 14px; font-family: 'Montserrat',sans-serif; font-size: 30px; font-weight: 600; letter-spacing: -0.02em; color: #1C1F26; max-width: 760px">Project Management - recovering a delayed development programme</h3>
+              <p style="margin:0 0 22px;font-size:17px;line-height:1.6;color:#3F4652;max-width:760px">The development of a modular software platform for sheet metal fabrication, used by over 1M people, was running 35% behind schedule with no structured visibility of the reason why. I stepped in as project manager of the ten-developers team to restore delivery control. I designed an Airtable database connected to Claude that captures tasks, deadlines and workload automatically to calculate delays by cause for every task, developer and sprint. Then, I turned that into a live programme-health view of the project that the client can review itself, using Airtable interfaces, with a mitigation defined for each root cause.</p>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px">
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">Project Management</span>
+                
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">Airtable Database Design</span>
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">Claude Automations</span>
+                <span style="font-size:13px;color:#4A5C8C;border:1px solid #D6DDE8;border-radius:3px;padding:5px 11px">Root-cause reporting</span>
+              </div>
+              <a href="#case-03" style="display:inline-flex;align-items:center;gap:6px;color:#4A5C8C;padding:8px 16px;margin-left:-16px;border-radius:4px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:14px">View project →</a>
+            </div>
+<div data-vscroll="1" style="position:relative;height:392px;overflow-y:auto;overflow-x:hidden;border-radius:12px;scrollbar-width:thin">
+              <div data-vtrack="1" style="display:flex;flex-direction:column;gap:16px;will-change:transform">
+                  <div style="border:1px solid #E1E7F0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 14px 34px -26px rgba(28,31,38,.4)"><img src="assets/f2bc3269-2ebc-4510-89e8-6474f6962bfa.png" alt="Planning module — calendar and job scheduling" style="display:block;width:100%;height:auto"></div>
+                  <div style="border:1px solid #E1E7F0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 14px 34px -26px rgba(28,31,38,.4)"><img src="assets/81184f09-1304-4b82-b507-a3ab5518263b.png" alt="Part production drawer with stage progress" style="display:block;width:100%;height:auto"></div>
+                  <div style="border:1px solid #E1E7F0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 14px 34px -26px rgba(28,31,38,.4)"><img src="assets/4dda20fe-55d6-4105-a19a-511bbc24f732.png" alt="Parts view with dynamic tabs" style="display:block;width:100%;height:auto"></div>
+                  <div style="border:1px solid #E1E7F0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 14px 34px -26px rgba(28,31,38,.4)"><img src="assets/7b996ead-973e-4cb0-b187-6ab10fd04d1b.png" alt="Airtable database tracking delay by task" style="display:block;width:100%;height:auto"></div>
+                  <div style="border:1px solid #E1E7F0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 14px 34px -26px rgba(28,31,38,.4)"><img src="assets/e812ac89-4f8a-4094-b4b3-0761ce065cef.png" alt="Airtable Gantt view of feature delay" style="display:block;width:100%;height:auto"></div>
+                  <div style="border:1px solid #E1E7F0;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 14px 34px -26px rgba(28,31,38,.4)"><img src="assets/2e17dc2b-0214-44d3-82b4-8edd5dc63e74.png" alt="OPS v5 Development Governance Dashboard" style="display:block;width:100%;height:auto"></div>
+              </div>
+              <div style="position:absolute;left:0;right:0;top:0;height:44px;background:linear-gradient(#fff,rgba(255,255,255,0));pointer-events:none"></div>
+              <div style="position:absolute;left:0;right:0;bottom:0;height:44px;background:linear-gradient(rgba(255,255,255,0),#fff);pointer-events:none"></div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 56px; align-items: center; border-top: 1px solid #D6DDE8; padding-top: 36px; width: 1296px; height: 1px">
+        </div>
+      </div><div style="margin: 60px 80px 0; background: linear-gradient(140deg,#2E3C61 0%,#4B5D8E 100%); border-radius: 10px; padding: 64px 64px; color: #fff; position: relative; overflow: hidden; width: 1176px; height: 547px; margin-top: 32px; margin-right: 40px; margin-left: 0px">
+        
+        <div style="position:absolute;left:-40px;bottom:-70px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.05)"></div>
+        <div style="position:relative;display:block">
+          <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A9B6D6;margin-bottom:18px">04 · HYBRID INTELLIGENCE</div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:36px">
+            <div>
+              <h3 style="margin:0 0 10px;font-family:'Montserrat',sans-serif;font-size:34px;font-weight:600;letter-spacing:-0.02em;line-height:1.15;max-width:520px">Small AI builds that changed how we work</h3>
+              <p style="margin:0;font-size:17px;line-height:1.6;color:#D3DBEC;max-width:480px">Tools I built for myself and my team.</p>
+            </div>
+            <a href="#case-04" style="display:inline-flex;align-items:center;gap:6px;color:#fff;padding:8px 16px;border-radius:4px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:14px;flex:none">View projects →</a>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+            <div style="border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.18); background: #fff; box-shadow: 0 24px 46px -26px rgba(0,0,0,.45); transition: transform .35s ease,box-shadow .35s ease; width: 558px; height: 358px" style-hover="transform:translateY(-6px);box-shadow:0 30px 54px -24px rgba(0,0,0,.55)">
+              <div style="height:28px;background:#EDF1F7;display:flex;align-items:center;gap:12px;padding:0 12px;border-bottom:1px solid #D6DDE8">
+                <div style="display:flex;gap:6px">
+                  <span style="width:8px;height:8px;border-radius:50%;background:#E3937A"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:#E0C177"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:#8FB694"></span>
+                </div>
+                <span style="flex:1;background:#fff;border:1px solid #D6DDE8;border-radius:4px;padding:2px 10px;font-size:10px;color:#8C9BBF;font-family:'Montserrat',sans-serif;text-align:center">hours-tracker</span>
+              </div>
+              <div data-panbox="1" style="width:100%;aspect-ratio:1082/640;overflow-y:auto;overflow-x:hidden;position:relative;scrollbar-width:thin">
+                <div data-autopan="1" style="position:relative">
+                      <img src="assets/41950eb6-bf53-40c5-af81-c3cabce3c09d.png" alt="Weekly hours-tracking artifact, built with Claude" style="display:block;width:100%;height:auto">
+      <div style="position:absolute;left:4.2%;top:25.8%;width:14%;height:20.6%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:53%;width:55.5%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:56.7%;width:46%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:60.4%;width:65%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:61.7%;width:11%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:65.4%;width:44%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:69.1%;width:72%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:18.2%;top:78.6%;width:25%;height:21.4%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:78%;top:78.6%;width:16%;height:21.4%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+                    </div>
+              </div>
+              
+            </div>
+            <div style="border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.18);background:#fff;box-shadow:0 24px 46px -26px rgba(0,0,0,.45);transition:transform .35s ease,box-shadow .35s ease;width:554px;height:358px" style-hover="transform:translateY(-6px);box-shadow:0 30px 54px -24px rgba(0,0,0,.55)">
+              <div style="height:28px;background:#EDF1F7;display:flex;align-items:center;gap:12px;padding:0 12px;border-bottom:1px solid #D6DDE8">
+                <div style="display:flex;gap:6px">
+                  <span style="width:8px;height:8px;border-radius:50%;background:#E3937A"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:#E0C177"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:#8FB694"></span>
+                </div>
+                <span style="flex:1;background:#fff;border:1px solid #D6DDE8;border-radius:4px;padding:2px 10px;font-size:10px;color:#8C9BBF;font-family:'Montserrat',sans-serif;text-align:center">niew-hero-audit</span>
+              </div>
+              <div style="height:317px;overflow:hidden;position:relative;background:#fff">
+                <div style="width:1440px;transform:scale(.3847);transform-origin:top left">
+                  <iframe data-autoscroll="1" src="work/niew-hero-audit.html" title="NiEW hero audit — AI-built landing page" style="width:1440px;height:824px;border:0;display:block"></iframe>
+                </div>
+                    <div data-live-cue="1" style="position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:8px;background:rgba(28,31,38,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:100px;padding:7px 14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;pointer-events:none;transition:opacity .4s ease">
+                      <span style="width:7px;height:7px;border-radius:50%;background:#8FB694;animation:pulseRingLight 2.4s ease-out infinite"></span>Live · scroll &amp; click
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI lab strip -->
+      <div style="background: #1C1F26; color: #fff; padding: 56px 80px 32px; margin-top: 60px; position: absolute; left: -1px; top: 2662px; width: 1282px; height: 135px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;border-bottom:1px solid #33373F;padding-bottom:32px;margin-bottom:20px">
+          <div>
+            <h2 style="margin:0 0 10px;font-family:'Montserrat',sans-serif;font-size:30px;font-weight:600;letter-spacing:-0.02em;line-height:1.15;max-width:560px">Let's get in touch!</h2>
+            <p style="margin: 0; font-size: 15px; color: #A0A7B3; width: 937px; height: 23px">I'd be glad to hear from you, whether it's about a potential collaboration or simply to exchange ideas. Please don't hesitate to get in touch.</p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;flex:none">
+            <a href="mailto:angela.futures.designer@gmail.com" data-copy-hint="angela.futures.designer@gmail.com" title="Email angela.futures.designer@gmail.com — click also copies the address" style="width:38px;height:38px;border:1px solid #4A5058;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#D3D8E2" style-hover="color:#fff;border-color:#8C93A3">
+              <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+            </a>
+            <a href="tel:+393514936432" data-copy-hint="+39 351 4936432" title="Call +39 351 4936432 — click also copies the number" style="width:38px;height:38px;border:1px solid #4A5058;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#D3D8E2" style-hover="color:#fff;border-color:#8C93A3">
+              <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 013.1 4.2 2 2 0 015.1 2h2a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2.1L8 9.6a16 16 0 006.4 6.4l1.1-1.2a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/angelapiazzadesigner" target="_blank" rel="noopener" title="LinkedIn" style="width:38px;height:38px;border:1px solid #4A5058;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#D3D8E2" style-hover="color:#fff;border-color:#8C93A3">
+              <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.77V21h-4v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97V21H9z"></path></svg>
+            </a>
+            <a href="https://www.behance.net/Angela_Piazza" target="_blank" rel="noopener" title="Behance" style="width:38px;height:38px;border:1px solid #4A5058;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#D3D8E2;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px" style-hover="color:#fff;border-color:#8C93A3">Be</a>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12.5px;color:#6E7683">
+          <span>Built with Claude, Claude Design and Claude Code</span><span>Angela Piazza</span>
+        </div>
+      </div>
+
+      <!-- about -->
+      
+
+      <!-- contact -->
+      
+
+    </div>
+  </div>
+
+  <!-- ============ PAGE 2 : WORK ============ -->
+  <div data-view="work" style="display:none;flex-direction:column;gap:16px">
+    <div id="work-page" style="width:1440px;max-width:100%;margin:0 auto;background:#fff;overflow:clip">
+
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:26px 80px;border-bottom:1px solid #EDF1F7;position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)">
+        
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="assets/1220bfc6-b7ed-4699-a757-9a8706de9dd7.jpg" alt="Angela Piazza" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:1px solid #D6DDE8">
+          <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:17px;color:#1C1F26;letter-spacing:-0.01em">Angela Piazza</div>
+        </div><div style="display:flex;align-items:center;gap:36px;font-size:15px;color:#4A5C8C">
+          <span data-nav="home" role="button" tabindex="0" style="cursor:pointer;transition:color .2s ease" style-hover="color:#2E3C61">Home</span><span data-nav="work" role="button" tabindex="0" style="color:#1C1F26;font-weight:600;cursor:pointer">My Work</span>
+          <span data-contact-open="1" role="button" tabindex="0" style="background:#2E3C61;color:#fff;padding:8px 16px;border-radius:4px;font-weight:600;font-size:14px;font-family:'Montserrat',sans-serif;cursor:pointer;transition:background .25s ease" style-hover="background:#3A4A75">Contact me</span>
+        </div>
+      </div>
+
+      <div style="padding: 88px 80px 56px; border-bottom: 1px solid #EDF1F7; position: relative; overflow: hidden">
+        <div style="position:absolute;right:-90px;top:-70px;width:280px;height:280px;border-radius:50%;background:linear-gradient(200deg,#2E3C61,#63769F)"></div>
+        
+        <h2 style="position: relative; margin: 0 0 20px; font-family: 'Montserrat',sans-serif; font-size: 56px; font-weight: 600; letter-spacing: -0.03em; color: #1C1F26; width: 1280px; height: 65px">My Work</h2>
+        <p style="position: relative; margin: 0; font-size: 20px; line-height: 1.6; color: #3F4652; width: 1012px; height: 86px">Four projects that show how I work: from field research in China to a shipped platform, a design system rebuilt from scratch, a delayed programme recovered through data, and the AI tools I build for the team I lead.</p>
+      </div>
+
+      
+
+      <div style="display:grid;grid-template-columns:220px minmax(0,1fr);gap:64px;padding:72px 80px 40px">
+        <div style="font-size:15px;color:#6E7683;line-height:2.1;position:sticky;top:112px;align-self:start;border-left:2px solid #EDF1F7;padding-left:20px;z-index:30">
+          <a href="#case-01" data-idx="case-01" style="display:block;color:#2E3C61;font-weight:600;border-left:2px solid #2E3C61;margin-left:-22px;padding-left:20px;transition:color .25s ease,border-color .25s ease,padding-left .25s ease" style-hover="color:#1C1F26;padding-left:24px">01&nbsp; New Service Platform</a>
+          <a href="#case-02" data-idx="case-02" style="display:block;color:#6E7683;border-left:2px solid transparent;margin-left:-22px;padding-left:20px;transition:color .25s ease,border-color .25s ease,padding-left .25s ease" style-hover="color:#1C1F26;padding-left:24px">02&nbsp; New Design System</a>
+          <a href="#case-03" data-idx="case-03" style="display:block;color:#6E7683;border-left:2px solid transparent;margin-left:-22px;padding-left:20px;transition:color .25s ease,border-color .25s ease,padding-left .25s ease" style-hover="color:#1C1F26;padding-left:24px">03&nbsp; Project Management</a>
+          <a href="#case-04" data-idx="case-04" style="display:block;color:#6E7683;border-left:2px solid transparent;margin-left:-22px;padding-left:20px;transition:color .25s ease,border-color .25s ease,padding-left .25s ease" style-hover="color:#1C1F26;padding-left:24px">04&nbsp; Small AI Builds</a>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:120px;min-width:0">
+
+          <!-- case 01 -->
+          <div id="case-01" style="min-width:0;scroll-margin-top:130px">
+            <div style="font-family: 'Montserrat',sans-serif; font-size: 32px; font-weight: 600; color: #8C9BBF; letter-spacing: .14em; margin-bottom: 18px">01</div>
+            <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px"><h3 style="margin: 0 0 20px; font-family: 'Montserrat',sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; color: #1C1F26; max-width: 820px">A new Service Platform - from on field research in China to the final UI</h3></div>
+            <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:30px">
+              <span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A6A28;background:#F7EFE0;border-radius:100px;padding:7px 14px">NDA · VISUALS &amp; CONTENTS ANONYMISED</span>
+            </div>
+            <div style="display:grid;grid-template-columns:180px 1fr;gap:32px;align-items:center;border-top:1px solid #D6DDE8;border-bottom:1px solid #D6DDE8;padding:24px 0;margin-bottom:44px" data-reveal="">
+              <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C">Skills developed</div>
+              <div style="display:flex;flex-wrap:wrap;gap:9px">
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Field research in International Markets</span>
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Data Analysis with AI</span>
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Service Mapping &amp; Systems Thinking</span>
+                
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">End-to-end UI Ownership</span>
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Complex Dataset Management (Airtable)</span>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-bottom:44px">
+              <div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:12px">The problem</div>
+                <p style="margin:0;font-size:18px;line-height:1.7;color:#3F4652">An industrial manufacturer offered a wide range of services around its machines, but they lived in separate places and were <strong style="color: rgb(28, 31, 38); font-weight: 700;">largely unknown to customers,</strong>&nbsp;even the client itself could not say which ones deserved investment. <br>The goal: <strong style="color: rgb(28, 31, 38);">one platform that makes every service discoverable</strong> and sellable alongside the machine.</p>
+              </div>
+              <div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:12px">Outcome</div>
+                <p style="margin: 0; font-size: 18px; line-height: 1.7; color: #040404; position: relative">A clear understanding of their active digital services, thanks to the<b> service journey </b>we built — which became the client's own <b>decision-making tool </b>for what to keep, drop, or develop. The platform's <b>visual concept </b>was shaped around their brand identity, alongside the design of <b>20 new features</b> across four sprints, with the UI signed off through consistently positive feedback.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
+              <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C">Selected screens</div>
+              <span style="font-size:13px;color:#8C9BBF">Scroll for more →</span>
+            </div>
+            <div data-gallery="1" style="display: flex; gap: 20px; overflow-x: auto; min-width: 0; max-width: 100%; box-sizing: border-box; padding-bottom: 20px; align-items: flex-start; width: 996px; height: 608px">
+              <figure style="flex:0 0 900px;margin:0">
+                <div style="border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/98bd6a47-15a8-4d76-9339-a8d25fc82aa3.png" alt="Performance monitoring — efficiency, cycle quality and tooling in a single view." style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Performance monitoring — efficiency, cycle quality and tooling in a single view.</figcaption>
+              </figure>
+              <figure style="flex:0 0 900px;margin:0">
+                <div style="border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/c084ee6c-79a8-441c-a708-5887b4f7b888.png" alt="Downtime event logger, anonymised" style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Downtime event logger — every stop on a timeline, with the diagnosis beside it.</figcaption>
+              </figure>
+              <figure style="flex:0 0 900px;margin:0">
+                <div style="border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/bfa0405c-14a4-481a-8a9c-1cfb3e9a870d.png" alt="Preventive and predictive maintenance — task list with a detail panel for each intervention." style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Preventive and predictive maintenance — task list with a detail panel for each intervention.</figcaption>
+              </figure>
+              <figure style="flex:0 0 900px;margin:0">
+                <div style="border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/63b0ef32-1aeb-46f6-85f8-cb2724876ec3.png" alt="Shift manager — machine occupation and what happened at each shift handover." style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Shift manager — machine occupation and what happened at each shift handover.</figcaption>
+              </figure>
+              <figure style="flex:0 0 900px;margin:0">
+                <div style="border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/1f5f58ec-b2d3-443e-b4be-ce3bbc822edb.png" alt="Spare parts marketplace — from a maintenance task straight to the order." style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Spare parts marketplace — from a maintenance task straight to the order.</figcaption>
+              </figure>
+              <figure style="flex:0 0 900px;margin:0">
+                <div style="border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/e938197c-743e-4c74-8269-21ff1453cec3.png" alt="Energy optimiser — auxiliary equipment scheduling and savings, machine by machine." style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Energy optimiser — auxiliary equipment scheduling and savings, machine by machine.</figcaption>
+              </figure>
+              <figure style="flex:0 0 900px;margin:0">
+                <div style="border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/fd531f04-856a-4246-a1c7-c99188c1cb8d.png" alt="Energy analytics — consumption trends and a breakdown by machine state." style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Energy analytics — consumption trends and a breakdown by machine state.</figcaption>
+              </figure>
+              <figure style="flex:0 0 300px;margin:0">
+                <div style="border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/d73a5cc4-f46e-4957-95a5-1aa6bfc9f8f9.png" alt="Technician app — the same tasks, on the shop floor." style="display: block; width: 271px; height: 507px"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Technician app — the same tasks, on the shop floor.</figcaption>
+              </figure>
+            </div>
+            
+            <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:22px">The process</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr)" data-reveal="">
+              <div style="padding-right:32px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">01</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Field research</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">UX research on site to interview the client’s largest customers in China, and extended the study across Italy.</div>
+              </div>
+              <div style="padding-right:32px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">02</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Data into direction</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Elaboration of ~1000 interview notes, generation of ~ 100 insights and ~130 product features using AI</div>
+              </div>
+              <div style="padding-right:32px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">03</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Map and prioritise</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">User Journey mapping of their digital services as decision making tool for the client.&nbsp; Rating product features with the client to reach the ~20 essentials.</div>
+              </div>
+              <div style="padding-right:0px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">04</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Concept and UI screens</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Concept approved at first presentation. Design of 20 features chosen through four sprints of requirements collection, design, review, redesign.</div>
+              </div>
+            </div>
+            <div style="margin-top:48px;background:linear-gradient(140deg,#2E3C61 0%,#4B5D8E 100%);border-radius:10px;padding:52px 56px;color:#fff;position:relative;overflow:hidden">
+              
+              <div style="position:absolute;right:60px;bottom:-90px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05)"></div>
+              <div style="position:relative;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A9B6D6;margin-bottom:38px">What it says about how I work</div>
+              <div style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:44px">
+                <div style="border-top:1px solid rgba(255,255,255,.22);padding-top:24px">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;margin-bottom:12px">Trusted with the client relationship</div>
+                  <div style="font-size:16px;line-height:1.7;color:#D3DBEC;text-wrap:pretty">Being sent to China to interview the client's largest customers represented a significant vote of confidence from the managers in my way of working.</div>
+                </div>
+                <div style="border-top:1px solid rgba(255,255,255,.22);padding-top:24px">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;margin-bottom:12px">Comfort with complexity</div>
+                  <div style="font-size:16px;line-height:1.7;color:#D3DBEC;text-wrap:pretty">Hundreds of interview fragments became a structured dataset in Airtable, then a journey, then screens. Managing that complexity, and all the critical parts of the work, is what raised the quality of the project.</div>
+                </div>
+                <div style="border-top:1px solid rgba(255,255,255,.22);padding-top:24px">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;margin-bottom:12px">Ownership through delivery</div>
+                  <div style="font-size:16px;line-height:1.7;color:#D3DBEC;text-wrap:pretty">The critical workstreams stayed with me from the first interview to the final handover, with full and independent ownership of the UI Design, which received consistently positive feedback.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- case 02 -->
+          <div id="case-02" style="scroll-margin-top:130px">
+            <div style="font-family: 'Montserrat',sans-serif; font-size: 32px; font-weight: 600; color: #8C9BBF; letter-spacing: .14em; margin-bottom: 18px">02</div>
+            <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px"><div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px"><h3 style="margin: 0 0 20px; font-family: 'Montserrat',sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; color: #1C1F26; max-width: 820px">A new Design System - from fragmented design to one coherent digital ecosystem</h3></div></div>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:30px"><span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A6A28;background:#F7EFE0;border-radius:100px;padding:7px 14px">NDA · VISUALS &amp; CONTENTS ANONYMISED</span></div>
+            <div style="display:grid;grid-template-columns:180px 1fr;gap:32px;align-items:center;border-top:1px solid #D6DDE8;border-bottom:1px solid #D6DDE8;padding:24px 0;margin-bottom:44px" data-reveal="">
+              <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C">Skills developed</div>
+              <div style="display:flex;flex-wrap:wrap;gap:9px">
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Design System Architecture</span>
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Figma Variables Management</span>
+                
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Stakeholder Trust Building</span>
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Independent Project Ownership</span>
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Onboarding &amp; Training</span>
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Design-Dev Collaboration</span>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-bottom:44px">
+              <div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:12px">The problem</div>
+                <p style="margin:0;font-size:18px;line-height:1.7;color:#3F4652">Years of growth had left an industrial product with <strong style="color: rgb(28, 31, 38); font-weight: 700;">no coherent design system:&nbsp;</strong>duplicated components with no shared foundation, interpreted differently by every designer and developer. UX and UI felt fractured screen to screen, handoffs to development were <b>slow and error-prone</b>, and <b>weak cross-team communication</b> let the gaps widen further.</p>
+              </div>
+              <div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:12px">Outcome</div>
+                <p style="margin:0;font-size:18px;line-height:1.7;color:#3F4652">I rebuilt the design system on <b>shared variables and foundations</b>, aligned with the core component library, requesting changes through a <b>structured process </b>when needed and documenting everything to keep <b>design and development consistent</b>. I also designed new features end to end across <b>desktop, tablet and mobile</b>, working closely with developers to keep design and build in sync, and <b>aligning UX and UI</b> with the client's other product into one coherent digital ecosystem.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
+              <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C">SELECTED SCREENS</div>
+              <span style="font-size:13px;color:#8C9BBF">Scroll for more →</span>
+            </div>
+            <div data-gallery="1" style="display: flex; gap: 20px; overflow-x: auto; min-width: 0; max-width: 100%; box-sizing: border-box; padding-bottom: 20px; align-items: flex-start; width: 1012px; height: 555px">
+              <figure style="flex:0 0 780px;margin:0">
+                <div data-vscroll="1" style="height:440px;overflow-y:auto;overflow-x:hidden;border:1px solid #D6DDE8;border-radius:8px;background:#fff;scrollbar-width:thin;transition:box-shadow .35s ease" style-hover="box-shadow:0 20px 44px -30px rgba(28,31,38,.55)">
+                  <div data-vtrack="1"><img src="assets/bd445673-6bb2-4d08-be45-ddf77c9fc2c5.png" alt="Plant configuration screen, anonymised" onclick="{{ openLightbox }}" style="display:block;width:100%;height:auto;cursor:zoom-in"></div>
+                </div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Plant configuration — areas and units modelled visually, a complex setup task made legible.</figcaption>
+              </figure>
+              <figure style="flex:0 0 780px;margin:0">
+                <div data-vscroll="1" style="height:440px;overflow-y:auto;overflow-x:hidden;border:1px solid #D6DDE8;border-radius:8px;background:#fff;scrollbar-width:thin;transition:box-shadow .35s ease" style-hover="box-shadow:0 20px 44px -30px rgba(28,31,38,.55)">
+                  <div data-vtrack="1"><img src="assets/428f0dc8-e6dc-4f6f-b066-e4e5cd1a5984.png" alt="Conceptual plant process setup, anonymised" onclick="{{ openLightbox }}" style="display:block;width:100%;height:auto;cursor:zoom-in"></div>
+                </div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Conceptual plant setup — dense process data organised into a phase-by-phase builder.</figcaption>
+              </figure>
+              <figure style="flex:0 0 330px;margin:0">
+                <div style="height:440px;border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/43041191-4a7b-45b2-a27f-15faf1cddc86.png" alt="Stop-reason splitting flow, anonymised" onclick="{{ openLightbox }}" style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;cursor:zoom-in"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Splitting a stop reason into two, with the wasted output recalculated live.</figcaption>
+              </figure>
+              <figure style="flex:0 0 330px;margin:0">
+                <div style="height:440px;border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/959b01ee-0104-4bf3-880e-a7acbc9bcdbc.png" alt="Service key log, anonymised" onclick="{{ openLightbox }}" style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;cursor:zoom-in"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Service key log — every session on the line, tracked to the second.</figcaption>
+              </figure>
+              <figure style="flex:0 0 780px;margin:0">
+                <div data-vscroll="1" style="height:440px;overflow-y:auto;overflow-x:hidden;border:1px solid #D6DDE8;border-radius:8px;background:#fff;scrollbar-width:thin;transition:box-shadow .35s ease" style-hover="box-shadow:0 20px 44px -30px rgba(28,31,38,.55)">
+                  <div data-vtrack="1"><img src="assets/4dc7a2c6-2799-4eea-9fa4-912a49a6e232.png" alt="Mechanical KPI analytics dashboard, anonymised" onclick="{{ openLightbox }}" style="display:block;width:100%;height:auto;cursor:zoom-in"></div>
+                </div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Mechanical KPI analytics — efficiency compared across lines and shifts, desktop and tablet alike.</figcaption>
+              </figure>
+              <figure style="flex:0 0 380px;margin:0">
+                <div style="height:440px;border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/fdf00824-9b35-46d1-9159-d4040425790e.png" alt="Component documentation page, anonymised" onclick="{{ openLightbox }}" style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;cursor:zoom-in"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Component documentation I wrote — anatomy, usage rules and do/don't guidelines for the team.</figcaption>
+              </figure>
+              <figure style="flex:0 0 562px;margin:0">
+                <div style="height:440px;border:1px solid #D6DDE8;border-radius:8px;overflow:hidden;background:#fff;transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 20px 44px -30px rgba(28,31,38,.55)"><img src="assets/3b80022f-221d-4db8-ab6c-e5c60e530b96.png" alt="Component build-guidelines page, anonymised" onclick="{{ openLightbox }}" style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;cursor:zoom-in"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Build guidelines — step-by-step rules so any designer could assemble the layout correctly.</figcaption>
+              </figure>
+              <figure style="flex:0 0 700px;margin:0">
+                <div data-vscroll="1" style="height:440px;overflow-y:auto;overflow-x:hidden;border:1px solid #D6DDE8;border-radius:8px;background:#fff;scrollbar-width:thin;transition:box-shadow .35s ease" style-hover="box-shadow:0 20px 44px -30px rgba(28,31,38,.55)">
+                  <div data-vtrack="1"><img src="assets/dpo-navigation-menu.png" alt="Navigation menu component specification, anonymised" onclick="{{ openLightbox }}" style="display:block;width:100%;height:auto;cursor:zoom-in"></div>
+                </div>
+                <figcaption style="margin:12px 0 0;font-size:14px;line-height:1.55;color:#6E7683">Navigation menu component — every level and state specified, from collapsed rail to full menu.</figcaption>
+              </figure>
+            </div>
+            
+            <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:22px">The process</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr)" data-reveal="">
+              <div style="padding-right:32px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">01</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Rebuilt the design system</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Managed independently the creation of the new design system library from zero: new components, connected shared variables, and scalable foundations.</div>
+              </div>
+              <div style="padding-right:32px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">02</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Designed new features</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Designed full UX/UI flows across desktop, tablet and mobile, built on the rebuilt component library, working directly with developers to keep design and build in sync.</div>
+              </div>
+              <div style="padding-right:32px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">03</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Aligned the ecosystem</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Unified UX and UI patterns with the client's other product, turning two disconnected experiences into one coherent digital ecosystem.</div>
+              </div>
+              <div style="padding-right:0px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">04</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Documented and trained</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Authored system guidelines and onboarded new designers onto Figma, embedding a shared, scalable design language across the team.</div>
+              </div>
+            </div>
+            <div style="margin-top:48px;background:linear-gradient(140deg,#2E3C61 0%,#4B5D8E 100%);border-radius:10px;padding:52px 56px;color:#fff;position:relative;overflow:hidden">
+              
+              <div style="position:absolute;right:60px;bottom:-90px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05)"></div>
+              <div style="position:relative;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A9B6D6;margin-bottom:38px">What it says about how I work</div>
+              <div style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:44px">
+                <div style="border-top:1px solid rgba(255,255,255,.22);padding-top:24px">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;margin-bottom:12px">Build trust across teams</div>
+                  <div style="font-size:16px;line-height:1.7;color:#D3DBEC;text-wrap:pretty">Managed the client relationship personally, building the kind of confidence external stakeholders place in consistent quality and proactive thinking.</div>
+                </div>
+                <div style="border-top:1px solid rgba(255,255,255,.22);padding-top:24px">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;margin-bottom:12px">Proactive approach</div>
+                  <div style="font-size:16px;line-height:1.7;color:#D3DBEC;text-wrap:pretty">Navigated a genuinely complex design-development relationship, introducing new ways of working and turning a large volume of unstructured content into a clear, scalable design system.</div>
+                </div>
+                <div style="border-top:1px solid rgba(255,255,255,.22);padding-top:24px">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;margin-bottom:12px">Reliable under pressure</div>
+                  <div style="font-size:16px;line-height:1.7;color:#D3DBEC;text-wrap:pretty">Work was consistently delivered ahead of schedule, easing the client's workload while maintaining a high standard of quality throughout the engagement.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- case 03 -->
+          <div id="case-03" style="scroll-margin-top:130px">
+            <div style="font-family: 'Montserrat',sans-serif; font-size: 32px; font-weight: 600; color: #8C9BBF; letter-spacing: .14em; margin-bottom: 18px">03</div>
+            <h3 style="margin:0 0 20px;font-family:'Montserrat',sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.025em;line-height:1.15;color:#1C1F26;max-width:820px">Project Management - recovering a delayed development programme</h3>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:30px"><span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A6A28;background:#F7EFE0;border-radius:100px;padding:7px 14px">NDA · VISUALS &amp; CONTENTS ANONYMISED</span></div>
+            <div style="display:grid;grid-template-columns:180px 1fr;gap:32px;align-items:center;border-top:1px solid #D6DDE8;border-bottom:1px solid #D6DDE8;padding:24px 0;margin-bottom:44px" data-reveal="">
+              <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C">Skills developed</div>
+              <div style="display:flex;flex-wrap:wrap;gap:9px">
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Delivery recovery</span>
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Airtable system design</span>
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Claude automation</span>
+                <span style="font-size:14px;color:#2E3C61;background:#EDF1F7;border-radius:100px;padding:8px 16px">Root-cause reporting</span>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-bottom:44px">
+              <div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:12px">The problem</div>
+                <p style="margin:0;font-size:18px;line-height:1.7;color:#3F4652">The product is a modular software platform for sheet metal fabrication, used by over 1M active users. Our team designed its UX/UI from the ground up, then took on project management of the development team (around 10 developers) building it. At the point I stepped into that role, delivery was <b>running 35% behind schedule,</b> with no structured visibility into the source or scale of the delay. We took on project management to restore delivery control and establish clear accountability for its causes.</p>
+              </div>
+              <div>
+                <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:12px">Outcome</div>
+                <p style="margin:0;font-size:18px;line-height:1.7;color:#3F4652">I designed a dedicated <b>Airtable database, connected to Claude,</b> that captures task updates, deadlines and workload automatically and calculates delay — by cause — for every task, developer and sprint. Purpose-built <b>Airtable interfaces</b> turn this into a live programme-health view for the client: overall delay, root causes and the mitigation proposed for each. Delay is now measured and explained systematically, not reported anecdotally.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
+              <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C">THE DIGITAL PRODUCT</div>
+              <span style="font-size:13px;color:#8C9BBF">Scroll for more →</span>
+            </div>
+            <div data-gallery="1" style="display: flex; gap: 20px; overflow-x: auto; min-width: 0; max-width: 100%; box-sizing: border-box; padding-bottom: 20px; margin-bottom: 44px; width: 996px; height: 417px">
+              <figure style="flex:0 0 620px;margin:0">
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #D6DDE8;box-shadow:0 20px 40px -26px rgba(28,31,38,.35);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 26px 48px -24px rgba(28,31,38,.45)"><img src="assets/f2bc3269-2ebc-4510-89e8-6474f6962bfa.png" alt="Planning module — calendar view with job scheduling drawer" style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;color:#6E7683">Planning module — calendar view with job scheduling drawer.</figcaption>
+              </figure>
+              <figure style="flex:0 0 620px;margin:0">
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #D6DDE8;box-shadow:0 20px 40px -26px rgba(28,31,38,.35);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 26px 48px -24px rgba(28,31,38,.45)"><img src="assets/81184f09-1304-4b82-b507-a3ab5518263b.png" alt="Part production drawer, with stage-by-stage progress" style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;color:#6E7683">Part production drawer, with stage-by-stage progress.</figcaption>
+              </figure>
+              <figure style="flex:0 0 620px;margin:0">
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #D6DDE8;box-shadow:0 20px 40px -26px rgba(28,31,38,.35);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 26px 48px -24px rgba(28,31,38,.45)"><img src="assets/4dda20fe-55d6-4105-a19a-511bbc24f732.png" alt="Parts view with dynamic tabs and kit grouping" style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;color:#6E7683">Parts view with dynamic tabs and kit grouping.</figcaption>
+              </figure>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
+              <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C">The tracking system</div>
+              <span style="font-size:13px;color:#8C9BBF">Scroll for more →</span>
+            </div>
+            <div data-gallery="1" style="display: flex; gap: 20px; overflow-x: auto; overflow-y: hidden; padding-bottom: 20px; margin-bottom: 48px; width: 1014px; max-width: 100%; box-sizing: border-box; min-width: 0; align-items: flex-start">
+              <figure style="flex:0 0 620px;margin:0">
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #D6DDE8;box-shadow:0 20px 40px -26px rgba(28,31,38,.35);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 26px 48px -24px rgba(28,31,38,.45)"><img src="assets/7b996ead-973e-4cb0-b187-6ab10fd04d1b.png" alt="Airtable database — task and delay tracking, grouped by epic and feature" style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;color:#6E7683">Airtable database — task and delay tracking, grouped by epic and feature.</figcaption>
+              </figure>
+              <figure style="flex:0 0 620px;margin:0">
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #D6DDE8;box-shadow:0 20px 40px -26px rgba(28,31,38,.35);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-6px);box-shadow:0 26px 48px -24px rgba(28,31,38,.45)"><img src="assets/e812ac89-4f8a-4094-b4b3-0761ce065cef.png" alt="Gantt view — feature and sprint-level delay tracking" style="display:block;width:100%;height:auto"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;color:#6E7683">Gantt view — feature and sprint-level delay tracking.</figcaption>
+              </figure>
+              <figure style="flex:0 0 620px;margin:0">
+                <div style="border-radius: 8px; overflow: hidden; border: 1px solid #D6DDE8; box-shadow: 0 20px 40px -26px rgba(28,31,38,.35); aspect-ratio: 4/3; transition: transform .35s ease,box-shadow .35s ease; width: 622px; height: 302px" style-hover="transform:translateY(-6px);box-shadow:0 26px 48px -24px rgba(28,31,38,.45)"><img src="assets/2e17dc2b-0214-44d3-82b4-8edd5dc63e74.png" alt="OPS v5 Development Governance Dashboard — the client-facing programme-health interface" style="display: block; width: 606px; height: 307px; object-fit: cover; object-position: top; transition: object-position 4s ease" style-hover="object-position:bottom"></div>
+                <figcaption style="margin:12px 0 0;font-size:14px;color:#6E7683">OPS v5 Development Governance Dashboard — the client-facing programme-health interface.</figcaption>
+              </figure>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:22px">The process</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr)" data-reveal="">
+              <div style="padding-right:32px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">01</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Assessed the situation</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Reviewed the state of delivery on taking over a programme already 35% behind schedule, with no consolidated record of its causes.</div>
+              </div>
+              <div style="padding-right:32px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">02</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Designed the system</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Architected an Airtable database, connected to Claude, to capture task, deadline and workload data automatically.</div>
+              </div>
+              <div style="padding-right:32px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">03</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Led the team</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Ran the team directly holding developers accountable to their commitments week by week.</div>
+              </div>
+              <div style="padding-right:0px">
+                <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+                  <span style="flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:#2E3C61;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px">04</span>
+                  <span style="flex:1;height:1px;background:#D6DDE8"></span>
+                </div>
+                <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Reported and mitigated</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Presented findings to the client through purpose-built Airtable interfaces, with a mitigation action defined for every cause.</div>
+              </div>
+            </div>
+            <div style="margin-top:48px;background:linear-gradient(140deg,#2E3C61 0%,#4B5D8E 100%);border-radius:10px;padding:52px 56px;color:#fff;position:relative;overflow:hidden">
+              
+              <div style="position:absolute;right:60px;bottom:-90px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05)"></div>
+              <div style="position:relative;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A9B6D6;margin-bottom:38px">What it says about how I work</div>
+              <div style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:44px">
+                <div style="border-top:1px solid rgba(255,255,255,.22);padding-top:24px">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;margin-bottom:12px">Turning data into decisions</div>
+                  <div style="font-size:16px;line-height:1.7;color:#D3DBEC;text-wrap:pretty">Went beyond reporting delay figures: using the data to identify root causes and define a mitigation for each, turning numbers into concrete next steps.</div>
+                </div>
+                <div style="border-top:1px solid rgba(255,255,255,.22);padding-top:24px">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;margin-bottom:12px">Building the tools required</div>
+                  <div style="font-size:16px;line-height:1.7;color:#D3DBEC;text-wrap:pretty">Where the necessary reporting tools did not exist, I designed and built them independently.</div>
+                </div>
+                <div style="border-top:1px solid rgba(255,255,255,.22);padding-top:24px">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.01em;margin-bottom:12px">Converts data into client trust</div>
+                  <div style="font-size:16px;line-height:1.7;color:#D3DBEC;text-wrap:pretty">The client now reviews the same data used internally, which is why they continue to rely on us for complex programmes.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- case 04 -->
+          <div id="case-04" style="scroll-margin-top:130px">
+            <div style="font-family: 'Montserrat',sans-serif; font-size: 32px; font-weight: 600; color: #8C9BBF; letter-spacing: .14em; margin-bottom: 18px">04</div>
+            <h3 style="margin:0 0 20px;font-family:'Montserrat',sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.025em;line-height:1.15;color:#1C1F26;max-width:820px">Small AI builds</h3>
+            <div style="display:flex;flex-direction:column;gap:48px;margin-top:40px">
+              <div style="background:#fff;border:1px solid #DCE3EE;border-radius:18px;padding:40px;box-shadow:0 34px 70px -46px rgba(28,31,38,.45);transition:transform .4s ease,box-shadow .4s ease;will-change:transform">
+                <h4 style="margin:0 0 18px;font-family:'Montserrat',sans-serif;font-size:26px;font-weight:600;color:#1C1F26">Automatic Workload Tracking</h4><div style="border-radius:10px;overflow:hidden;border:1px solid #D6DDE8;background:#fff;margin-bottom:24px;box-shadow:0 20px 40px -26px rgba(28,31,38,.35);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-5px);box-shadow:0 26px 48px -24px rgba(28,31,38,.45)">
+                  <div style="height:28px;background:#fff;display:flex;align-items:center;gap:12px;padding:0 12px;border-bottom:1px solid #D6DDE8">
+                    <div style="display:flex;gap:6px">
+                      <span style="width:8px;height:8px;border-radius:50%;background:#E3937A"></span>
+                      <span style="width:8px;height:8px;border-radius:50%;background:#E0C177"></span>
+                      <span style="width:8px;height:8px;border-radius:50%;background:#8FB694"></span>
+                    </div>
+                    <span style="flex:1;background:#F4F6FA;border:1px solid #D6DDE8;border-radius:4px;padding:2px 10px;font-size:10px;color:#8C9BBF;font-family:'Montserrat',sans-serif;text-align:center">hours-tracker</span>
+                  </div>
+                  <div data-panbox="1" style="width:100%;height:470px;overflow-y:auto;overflow-x:hidden;position:relative;scrollbar-width:thin">
+                    <div data-autopan="1" style="position:relative">
+                      <img src="assets/41950eb6-bf53-40c5-af81-c3cabce3c09d.png" alt="Weekly hours-tracking artifact, built with Claude" style="display:block;width:100%;height:auto">
+      <div style="position:absolute;left:4.2%;top:25.8%;width:14%;height:20.6%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:53%;width:55.5%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:56.7%;width:46%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:60.4%;width:65%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:61.7%;width:11%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:65.4%;width:44%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:10.9%;top:69.1%;width:72%;height:1.05%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:18.2%;top:78.6%;width:25%;height:21.4%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+      <div style="position:absolute;left:78%;top:78.6%;width:16%;height:21.4%;backdrop-filter:blur(2.5px);-webkit-backdrop-filter:blur(2.5px);border-radius:2px"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div data-flow="1" style="display:flex;align-items:center;justify-content:space-between;gap:0;margin-bottom:28px;background:#F7F9FC;border:1px solid #E4E9F2;border-radius:12px;padding:26px 44px">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:110px">
+                    <div style="width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid #D6DDE8;display:flex;align-items:center;justify-content:center;color:#2E3C61">
+                      <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+                    </div>
+                    <div style="font-size:12.5px;font-weight:600;color:#2E3C61;font-family:'Montserrat',sans-serif;text-align:center;line-height:1.3">Google<br>Calendar</div>
+                  </div>
+                  <div style="flex:1;height:1px;margin:0 20px;background:repeating-linear-gradient(90deg,#B9C4D6 0 6px,transparent 6px 12px)"></div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:110px">
+                    <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(140deg,#2E3C61,#4E6091);display:flex;align-items:center;justify-content:center;color:#fff;animation:pulseRing 2.6s ease-out infinite">
+                      <svg width="23" height="23" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.3L19 10l-5.1 1.7L12 17l-1.9-5.3L5 10l5.1-1.7z"></path><path d="M18.5 16.5l.7 1.9 1.8.6-1.8.6-.7 1.9-.7-1.9-1.8-.6 1.8-.6z"></path></svg>
+                    </div>
+                    <div style="font-size:12.5px;font-weight:600;color:#2E3C61;font-family:'Montserrat',sans-serif;text-align:center;line-height:1.3">Claude<br>Artifact</div>
+                  </div>
+                  <div style="flex:1;height:1px;margin:0 20px;background:repeating-linear-gradient(90deg,#B9C4D6 0 6px,transparent 6px 12px)"></div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:110px">
+                    <div style="width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid #D6DDE8;display:flex;align-items:center;justify-content:center;color:#2E3C61">
+                      <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.5l2 2 4-4.5"></path><rect x="3.5" y="3.5" width="17" height="17" rx="3"></rect></svg>
+                    </div>
+                    <div style="font-size:12.5px;font-weight:600;color:#2E3C61;font-family:'Montserrat',sans-serif;text-align:center;line-height:1.3">Logged<br>in Zoho</div>
+                  </div>
+                </div>
+                <p style="margin:0;font-size:16px;line-height:1.7;color:#3F4652">Tracking and logging my weekly hours was becoming time-consuming, especially in weeks spent across several projects at once. I mapped out the manual process I was using, then <b>built an artifact in Claude connected to my Google Calendar </b>based on the pain point identified: I set my planned hours per project for the week, the artifact reads my calendar, and it automatically checks actual hours against plan. <br>This lets me <b>monitor my workload on each project week by week </b>— avoiding overwork on billable projects — and <b>makes logging hours in Zoho fast and straightforward</b> at the end of the week</p>
+              </div>
+              <div style="background:#fff;border:1px solid #DCE3EE;border-radius:18px;padding:40px;box-shadow:0 34px 70px -46px rgba(28,31,38,.45);transition:box-shadow .4s ease;will-change:transform">
+                <h4 style="margin:0 0 18px;font-family:'Montserrat',sans-serif;font-size:26px;font-weight:600;color:#1C1F26">New Design System Offer</h4><div style="border-radius:10px;overflow:hidden;border:1px solid #D6DDE8;background:#fff;margin-bottom:24px;box-shadow:0 20px 40px -26px rgba(28,31,38,.35);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-5px);box-shadow:0 26px 48px -24px rgba(28,31,38,.45)">
+                  <div style="height:28px;background:#fff;display:flex;align-items:center;gap:12px;padding:0 12px;border-bottom:1px solid #D6DDE8">
+                    <div style="display:flex;gap:6px">
+                      <span style="width:8px;height:8px;border-radius:50%;background:#E3937A"></span>
+                      <span style="width:8px;height:8px;border-radius:50%;background:#E0C177"></span>
+                      <span style="width:8px;height:8px;border-radius:50%;background:#8FB694"></span>
+                    </div>
+                    <span style="flex:1;background:#F4F6FA;border:1px solid #D6DDE8;border-radius:4px;padding:2px 10px;font-size:10px;color:#8C9BBF;font-family:'Montserrat',sans-serif;text-align:center">niew-hero-audit</span>
+                  </div>
+                  <div style="height:566px;overflow:hidden;position:relative;background:#fff">
+                    <div style="width:1440px;transform:scale(.6361);transform-origin:top left">
+                      <iframe data-autoscroll="1" src="work/niew-hero-audit.html" title="NiEW hero audit — AI-built landing page" style="width:1440px;height:889px;border:0;display:block"></iframe>
+                    </div>
+                    <div data-live-cue="1" style="position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:8px;background:rgba(28,31,38,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:100px;padding:7px 14px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;pointer-events:none;transition:opacity .4s ease">
+                      <span style="width:7px;height:7px;border-radius:50%;background:#8FB694;animation:pulseRingLight 2.4s ease-out infinite"></span>Live · scroll &amp; click
+                    </div>
+                  </div>
+                </div>
+                
+                <div data-flow="1" style="display:flex;align-items:center;justify-content:space-between;gap:0;margin-bottom:28px;background:#F7F9FC;border:1px solid #E4E9F2;border-radius:12px;padding:26px 44px">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:110px">
+                    <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(140deg,#2E3C61,#4E6091);color:#fff;animation:pulseRing 2.6s ease-out infinite;display:flex;align-items:center;justify-content:center">
+                      <svg width="23" height="23" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.3L19 10l-5.1 1.7L12 17l-1.9-5.3L5 10l5.1-1.7z"></path><path d="M18.5 16.5l.7 1.9 1.8.6-1.8.6-.7 1.9-.7-1.9-1.8-.6 1.8-.6z"></path></svg>
+                    </div>
+                    <div style="font-size:12.5px;font-weight:600;color:#2E3C61;font-family:'Montserrat',sans-serif;text-align:center;line-height:1.3">Claude<br>Design</div>
+                  </div>
+                  <div style="flex:1;height:1px;margin:0 20px;background:repeating-linear-gradient(90deg,#B9C4D6 0 6px,transparent 6px 12px)"></div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:110px">
+                    <div style="width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid #D6DDE8;color:#2E3C61;display:flex;align-items:center;justify-content:center">
+                      <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"></rect><path d="M3.5 9h17M9 9v11"></path></svg>
+                    </div>
+                    <div style="font-size:12.5px;font-weight:600;color:#2E3C61;font-family:'Montserrat',sans-serif;text-align:center;line-height:1.3">Layout &amp;<br>animations</div>
+                  </div>
+                  <div style="flex:1;height:1px;margin:0 20px;background:repeating-linear-gradient(90deg,#B9C4D6 0 6px,transparent 6px 12px)"></div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:110px">
+                    <div style="width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid #D6DDE8;color:#2E3C61;display:flex;align-items:center;justify-content:center">
+                      <svg width="20" height="20" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 6 12 6s9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"></path><circle cx="12" cy="12" r="2.6"></circle></svg>
+                    </div>
+                    <div style="font-size:12.5px;font-weight:600;color:#2E3C61;font-family:'Montserrat',sans-serif;text-align:center;line-height:1.3">Review &amp;<br>mentoring</div>
+                  </div>
+                </div>
+                <p style="margin:0;font-size:16px;line-height:1.7;color:#3F4652;max-width:820px">As our <b>design-system offer evolved </b>to serve clients with different levels of digital maturity, I had the <b>responsibility of defining the right approach</b>, researching faster and more in-depth processes, and selecting the tools best suited to managing, maintaining, documenting and building design systems. <br>The offer's page was then brought to life using <b>Claude Design</b>, where I gave <b>guidance on layout, visual hierarchy and advanced animations</b>, with iterative review and mentoring in practice, applied to a real deliverable.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div><div style="background:#1C1F26;color:#fff;padding:56px 80px 32px;margin-top:60px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;border-bottom:1px solid #33373F;padding-bottom:32px;margin-bottom:20px">
+          <div>
+            <h2 style="margin:0 0 10px;font-family:'Montserrat',sans-serif;font-size:30px;font-weight:600;letter-spacing:-0.02em;line-height:1.15;max-width:560px">Let's get in touch!</h2>
+            <p style="margin: 0; font-size: 15px; color: #A0A7B3; width: 937px; height: 23px">I'd be glad to hear from you, whether it's about a potential collaboration or simply to exchange ideas. Please don't hesitate to get in touch.</p>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;flex:none">
+            <a href="mailto:angela.futures.designer@gmail.com" data-copy-hint="angela.futures.designer@gmail.com" title="Email angela.futures.designer@gmail.com — click also copies the address" style="width:38px;height:38px;border:1px solid #4A5058;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#D3D8E2" style-hover="color:#fff;border-color:#8C93A3">
+              <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+            </a>
+            <a href="tel:+393514936432" data-copy-hint="+39 351 4936432" title="Call +39 351 4936432 — click also copies the number" style="width:38px;height:38px;border:1px solid #4A5058;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#D3D8E2" style-hover="color:#fff;border-color:#8C93A3">
+              <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 013.1 4.2 2 2 0 015.1 2h2a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2.1L8 9.6a16 16 0 006.4 6.4l1.1-1.2a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/angelapiazzadesigner" target="_blank" rel="noopener" title="LinkedIn" style="width:38px;height:38px;border:1px solid #4A5058;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#D3D8E2" style-hover="color:#fff;border-color:#8C93A3">
+              <svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.77V21h-4v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97V21H9z"></path></svg>
+            </a>
+            <a href="https://www.behance.net/Angela_Piazza" target="_blank" rel="noopener" title="Behance" style="width:38px;height:38px;border:1px solid #4A5058;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#D3D8E2;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px" style-hover="color:#fff;border-color:#8C93A3">Be</a>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12.5px;color:#6E7683">
+          <span>Built with Claude, Claude Design and Claude Code</span><span>Angela Piazza</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="case2-lightbox" style="display:none;position:fixed;inset:0;background:rgba(15,17,22,.92);z-index:9999;align-items:center;justify-content:center;padding:48px;cursor:zoom-out" onclick="{{ closeLightbox }}">
+    <img id="case2-lightbox-img" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="max-width:92vw;max-height:92vh;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.5);object-fit:contain">
+  </div>
+
+</div></section>
+
+
+    <div data-toast="1" style="position:fixed;left:50%;bottom:32px;transform:translate(-50%,14px);z-index:300;background:#1C1F26;color:#fff;padding:11px 18px;border-radius:6px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;box-shadow:0 18px 40px -20px rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease"></div>
+    <div data-contact-modal="1" style="display:none;position:fixed;inset:0;z-index:200;align-items:center;justify-content:center;padding:24px">
+      <div data-contact-close="1" style="position:absolute;inset:0;background:rgba(28,31,38,.55);backdrop-filter:blur(3px)"></div>
+      <div role="dialog" aria-label="Contact Angela Piazza" style="position:relative;width:560px;max-width:100%;background:#fff;border:1px solid #D6DDE8;border-radius:12px;box-shadow:0 40px 90px -40px rgba(28,31,38,.6);padding:32px 32px 24px;animation:riseSoft .4s cubic-bezier(.22,.61,.36,1) both">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px">
+          <div>
+            <h3 style="margin:0 0 6px;font-family:'Montserrat',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em;color:#1C1F26">Let's talk</h3>
+            <p style="margin:0;font-size:15px;line-height:1.55;color:#6E7683">Happy to hear about the role or the problem you're working on.</p>
+          </div>
+          <button type="button" data-contact-close="1" aria-label="Close" style="width:34px;height:34px;flex:none;border:1px solid #D6DDE8;background:#fff;border-radius:50%;color:#6E7683;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s ease" style-hover="background:#EDF1F7">
+            <svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </button>
+        </div>
+              <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid #EDF1F7">
+                <div style="width:38px;height:38px;border-radius:50%;border:1px solid #D6DDE8;display:flex;align-items:center;justify-content:center;color:#4A5C8C;flex:none"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></div>
+                <div style="min-width:0;flex:1">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8C9BBF;margin-bottom:3px">Email</div>
+                  <div style="font-size:15px;color:#1C1F26;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">angela.futures.designer@gmail.com</div>
+                </div>
+                <div style="display:flex;gap:8px;flex:none">
+                  <button type="button" data-copy="angela.futures.designer@gmail.com" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#1C1F26;border:1px solid #D6DDE8;padding:7px 13px;border-radius:4px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;cursor:pointer;transition:background .2s ease,border-color .2s ease" style-hover="background:#EDF1F7">Copy</button>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid #EDF1F7">
+                <div style="width:38px;height:38px;border-radius:50%;border:1px solid #D6DDE8;display:flex;align-items:center;justify-content:center;color:#4A5C8C;flex:none"><svg width="17" height="17" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v2a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 3.2 2 2 0 014.1 1h2a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L7.1 8.6a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"></path></svg></div>
+                <div style="min-width:0;flex:1">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8C9BBF;margin-bottom:3px">Phone</div>
+                  <div style="font-size:15px;color:#1C1F26;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">+39 351 4936432</div>
+                </div>
+                <div style="display:flex;gap:8px;flex:none">
+                  <button type="button" data-copy="+39 351 4936432" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#1C1F26;border:1px solid #D6DDE8;padding:7px 13px;border-radius:4px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;cursor:pointer;transition:background .2s ease,border-color .2s ease" style-hover="background:#EDF1F7">Copy</button>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid #EDF1F7">
+                <div style="width:38px;height:38px;border-radius:50%;border:1px solid #D6DDE8;display:flex;align-items:center;justify-content:center;color:#4A5C8C;flex:none"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.3c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.03 1.38-2.03 2.8V21H9z"></path></svg></div>
+                <div style="min-width:0;flex:1">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8C9BBF;margin-bottom:3px">LinkedIn</div>
+                  <div style="font-size:15px;color:#1C1F26;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">angelapiazzadesigner</div>
+                </div>
+                <div style="display:flex;gap:8px;flex:none">
+                  <a href="https://www.linkedin.com/in/angelapiazzadesigner" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#1C1F26;border:1px solid #D6DDE8;padding:7px 13px;border-radius:4px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;cursor:pointer;transition:background .2s ease,border-color .2s ease" style-hover="background:#EDF1F7">Open</a>
+                  </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid #EDF1F7">
+                <div style="width:38px;height:38px;border-radius:50%;border:1px solid #D6DDE8;display:flex;align-items:center;justify-content:center;color:#4A5C8C;flex:none"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="currentColor"><path d="M7.5 4H2v16h5.9c3.2 0 5.3-1.5 5.3-4.4 0-2-1-3.2-2.6-3.7 1.3-.6 2-1.7 2-3.3C12.6 5.4 10.8 4 7.5 4zm-.3 6.6H5V6.6h2.2c1.3 0 2 .6 2 1.9 0 1.3-.7 2.1-2 2.1zm.3 6.8H5v-4.3h2.4c1.5 0 2.4.7 2.4 2.1 0 1.5-.9 2.2-2.3 2.2zM22 13.2c0-2.9-1.8-5-4.7-5-2.9 0-4.9 2.2-4.9 5.2 0 3.1 1.9 5.1 4.9 5.1 2.4 0 4.1-1.2 4.6-3.2h-2.6c-.3.7-1 1.1-1.9 1.1-1.4 0-2.2-.9-2.3-2.3H22v-.9zm-6.9-1c.2-1.2 1-1.9 2.2-1.9 1.2 0 2 .7 2.1 1.9zM15 5.6h5.7v1.6H15z"></path></svg></div>
+                <div style="min-width:0;flex:1">
+                  <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8C9BBF;margin-bottom:3px">Behance</div>
+                  <div style="font-size:15px;color:#1C1F26;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Angela_Piazza</div>
+                </div>
+                <div style="display:flex;gap:8px;flex:none">
+                  <a href="https://www.behance.net/Angela_Piazza" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#1C1F26;border:1px solid #D6DDE8;padding:7px 13px;border-radius:4px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:13px;cursor:pointer;transition:background .2s ease,border-color .2s ease" style-hover="background:#EDF1F7">Open</a>
+                  </div>
+              </div>
+        <div data-copy-toast="1" style="opacity:0;transition:opacity .3s ease;margin-top:18px;font-size:13px;color:#4A5C8C;font-family:'Montserrat',sans-serif;font-weight:600">Copied to clipboard</div>
+      </div>
+    </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+class Component extends DCLogic {
+  componentDidMount() { this.views(); this.contact(); this.footerContacts(); this.heroCue(); this.reveal(); this.autoScroll(); this.galleries(); this.activeIndex(); this.showcases(); this.vscrolls(); this.fanStack(); }
+  heroCue() {
+    const bars = Array.prototype.slice.call(document.querySelectorAll('[data-cue]'));
+    const lines = Array.prototype.slice.call(document.querySelectorAll('[data-cueline]'));
+    if (!bars.length || !lines.length) return;
+    let cur = -1, held = null, timer = null;
+    const paint = (i) => {
+      lines.forEach((l, k) => {
+        const on = k === i;
+        l.style.opacity = on ? '1' : '0';
+        l.style.transform = on ? 'none' : (k < i ? 'translateY(-16px)' : 'translateY(20px)');
+      });
+      bars.forEach((b, k) => { b.style.background = k === i ? '#6376A8' : '#D6DDE8'; });
+    };
+    const step = () => { cur = (cur + 1) % lines.length; if (held === null) paint(cur); };
+    const run = () => { timer = setInterval(step, 5000); };
+    bars.forEach((b, k) => {
+      b.addEventListener('mouseenter', () => { held = k; paint(k); });
+      b.addEventListener('mouseleave', () => { held = null; paint(cur); });
+    });
+    step();
+    run();
+  }
+  toast(msg) {
+    const el = document.querySelector('[data-toast]');
+    if (!el) return;
+    el.textContent = msg;
+    el.style.opacity = '1';
+    el.style.transform = 'translate(-50%,0)';
+    clearTimeout(this._tt);
+    this._tt = setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translate(-50%,14px)'; }, 2400);
+  }
+  copyText(v, done) {
+    const legacy = () => {
+      const ta = document.createElement('textarea');
+      ta.value = v; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.left = '0'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      ta.setSelectionRange(0, v.length);
+      try { document.execCommand('copy'); } catch (err) {}
+      document.body.removeChild(ta);
+      if (done) done();
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(v).then(() => { if (done) done(); }).catch(legacy);
+    } else { legacy(); }
+  }
+  footerContacts() {
+    document.querySelectorAll('[data-copy-hint]').forEach((a) => {
+      a.addEventListener('click', () => {
+        const v = a.getAttribute('data-copy-hint');
+        const mail = (a.getAttribute('href') || '').indexOf('mailto:') === 0;
+        this.copyText(v, () => this.toast((mail ? 'Opening your mail app · ' : 'Opening your phone app · ') + v + ' copied'));
+      });
+    });
+  }
+  views() {
+    const views = {};
+    document.querySelectorAll('[data-view]').forEach((v) => { views[v.getAttribute('data-view')] = v; });
+    if (!views.home || !views.work) return;
+    if (views.home.contains(views.work)) views.home.parentElement.appendChild(views.work);
+    const modal = document.querySelector('[data-contact-modal]');
+    if (modal && views.home.contains(modal)) views.home.parentElement.appendChild(modal);
+    const toastEl = document.querySelector('[data-toast]');
+    if (toastEl && views.home.contains(toastEl)) views.home.parentElement.appendChild(toastEl);
+    const show = (name, anchorId) => {
+      Object.keys(views).forEach((k) => {
+        views[k].style.display = k === name ? 'flex' : 'none';
+      });
+      document.querySelectorAll('[data-nav]').forEach((n) => {
+        const on = n.getAttribute('data-nav') === name;
+        n.style.color = on ? '#1C1F26' : '#4A5C8C';
+        n.style.fontWeight = on ? '600' : '400';
+      });
+      requestAnimationFrame(() => {
+        this.galleries();
+        this.showcases();
+        this.vscrolls();
+      });
+      if (anchorId) {
+        const el = document.getElementById(anchorId);
+        if (el) { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }); return; }
+      }
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    };
+    this._showView = show;
+    document.querySelectorAll('[data-nav]').forEach((n) => {
+      const go = () => show(n.getAttribute('data-nav'));
+      n.addEventListener('click', go);
+      n.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+    });
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      a.addEventListener('click', (e) => {
+        const target = document.getElementById(id);
+        if (!target) return;
+        const inWork = views.work.contains(target) || id === 'work-page';
+        if (inWork && views.work.style.display === 'none') {
+          e.preventDefault();
+          show('work', id === 'work-page' ? null : id);
+        }
+      });
+    });
+    show('home');
+  }
+  contact() {
+    const modal = document.querySelector('[data-contact-modal]');
+    if (!modal) return;
+    const toast = modal.querySelector('[data-copy-toast]');
+    const open = () => { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; };
+    const close = () => { modal.style.display = 'none'; document.body.style.overflow = ''; if (toast) toast.style.opacity = '0'; };
+    document.querySelectorAll('[data-contact-open]').forEach((b) => {
+      b.addEventListener('click', open);
+      b.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+    modal.querySelectorAll('[data-contact-close]').forEach((b) => b.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    modal.querySelectorAll('[data-copy]').forEach((b) => {
+      b.addEventListener('click', () => {
+        const v = b.getAttribute('data-copy');
+        const done = () => {
+          b.textContent = 'Copied';
+          if (toast) { toast.textContent = v + ' copied'; toast.style.opacity = '1'; }
+          setTimeout(() => { b.textContent = 'Copy'; if (toast) toast.style.opacity = '0'; }, 2200);
+        };
+        const legacy = () => {
+          const ta = document.createElement('textarea');
+          ta.value = v; ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.left = '0'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.focus(); ta.select();
+          ta.setSelectionRange(0, v.length);
+          try { document.execCommand('copy'); } catch (err) {}
+          document.body.removeChild(ta);
+          done();
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(v).then(done).catch(legacy);
+        } else { legacy(); }
+      });
+    });
+  }
+  reveal() {
+    if (typeof IntersectionObserver === 'undefined') return;
+    if (!this._io) {
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          this._io.unobserve(e.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    }
+    document.querySelectorAll('[data-reveal], figure, h3').forEach((el) => {
+      if (el.__rv) return;
+      el.__rv = true;
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.92) return;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(18px)';
+      el.style.transition = 'opacity .6s cubic-bezier(.22,.61,.36,1), transform .6s cubic-bezier(.22,.61,.36,1)';
+      this._io.observe(el);
+    });
+  }
+  renderVals() {
+    return {
+      openLightbox: (e) => {
+        const box = document.getElementById('case2-lightbox');
+        const img = document.getElementById('case2-lightbox-img');
+        if (!box || !img) return;
+        img.src = e.currentTarget.src;
+        box.style.display = 'flex';
+      },
+      closeLightbox: () => {
+        const box = document.getElementById('case2-lightbox');
+        if (box) box.style.display = 'none';
+      },
+    };
+  }
+  galleries() {
+    document.querySelectorAll('[data-gallery]').forEach((row) => {
+      if (row.__g) return; row.__g = true;
+      const bar = null, count = null;
+      const items = Array.prototype.slice.call(row.children);
+      if (!items.length) return;
+      row.style.scrollSnapType = 'x proximity';
+      row.style.scrollBehavior = 'smooth';
+      items.forEach((f) => {
+        f.style.scrollSnapAlign = 'center';
+        f.style.transition = 'transform .5s cubic-bezier(.22,.61,.36,1), opacity .5s ease, filter .5s ease';
+      });
+      const rel = (f) => f.offsetLeft - row.offsetLeft;
+      const pad = (n) => (n < 10 ? '0' + n : '' + n);
+      const upd = () => {
+        const max = row.scrollWidth - row.clientWidth;
+        const p = max > 0 ? row.scrollLeft / max : 0;
+        const c = row.scrollLeft + row.clientWidth / 2;
+        let best = 0, bd = Infinity;
+        const atEnd = max > 0 && row.scrollLeft >= max - 2;
+        const atStart = row.scrollLeft <= 2;
+        items.forEach((f, i) => {
+          const d = Math.abs(rel(f) + f.offsetWidth / 2 - c);
+          if (d < bd) { bd = d; best = i; }
+          const inView = rel(f) >= row.scrollLeft - 4 && rel(f) + f.offsetWidth <= row.scrollLeft + row.clientWidth + 4;
+          const k = inView ? 0 : Math.min(1, d / (row.clientWidth * 0.8));
+          f.style.opacity = (1 - k * 0.5).toFixed(3);
+          f.style.transform = 'scale(' + (1 - k * 0.05).toFixed(3) + ')';
+          f.style.filter = k > 0.55 ? 'saturate(.7)' : 'none';
+        });
+        if (atEnd) best = items.length - 1;
+        if (atStart) best = 0;
+        if (count) count.textContent = pad(best + 1) + ' / ' + pad(items.length);
+      };
+      let raf = null;
+      row.addEventListener('scroll', () => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => { raf = null; upd(); });
+      });
+      upd();
+      setTimeout(upd, 500);
+      window.addEventListener('resize', upd);
+    });
+  }
+  showcases() {
+    document.querySelectorAll('[data-showcase]').forEach((sc) => {
+      if (sc.__sc) return; sc.__sc = true;
+      const shots = Array.prototype.slice.call(sc.querySelectorAll('[data-shot]'));
+      const dots = Array.prototype.slice.call(sc.querySelectorAll('[data-dot]'));
+      const label = sc.querySelector('[data-sc-label]');
+      if (!shots.length) return;
+      const viewport = shots[0].parentElement;
+      const cap = viewport.clientHeight || 372;
+      viewport.style.height = cap + 'px';
+      let cur = -1, paused = false, shownAt = 0;
+      shots.forEach((s0) => { s0.style.transition = 'opacity .9s ease'; s0.style.opacity = '0'; });
+      sc.addEventListener('mouseenter', () => { paused = true; });
+      sc.addEventListener('mouseleave', () => { paused = false; });
+      const show = (i) => {
+        cur = i; shownAt = performance.now();
+        shots.forEach((s, k) => {
+          s.style.opacity = k === i ? '1' : '0';
+          s.style.zIndex = k === i ? '2' : '1';
+          const p = s.firstElementChild;
+          if (p) { p.style.transition = k === i ? 'none' : 'transform .8s ease'; p.style.transform = 'translateY(0)'; }
+          s.__y = 0;
+        });
+        dots.forEach((d, k) => {
+          d.style.background = k === i ? '#2E3C61' : '#D6DDE8';
+          d.style.width = k === i ? '30px' : '12px';
+        });
+        const img = shots[i].querySelector('img');
+        if (label && img) label.textContent = img.getAttribute('alt') || '';
+      };
+      dots.forEach((d, k) => {
+        d.addEventListener('click', () => show(k));
+        d.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') show(k); });
+      });
+      show(0);
+      const DWELL = 3000;
+      const tick = () => {
+        if (!paused && cur >= 0) {
+          const cs = shots[cur], p = cs.firstElementChild;
+          const m = Math.max(0, p.offsetHeight - viewport.clientHeight);
+          if (m === 0) {
+            p.style.transform = 'translateY(' + Math.round((viewport.clientHeight - p.offsetHeight) / 2) + 'px)';
+          } else if ((cs.__y || 0) < m) {
+            const step = cs.getAttribute('data-pan') === 'slow' ? Math.max(0.18, m / 620) : Math.max(0.4, m / 150);
+            cs.__y = Math.min(m, (cs.__y || 0) + step);
+            p.style.transform = 'translateY(' + (-cs.__y) + 'px)';
+          }
+          const panned = m === 0 || (cs.__y || 0) >= m - 0.5;
+          if (shots.length > 1 && panned && performance.now() - shownAt > DWELL + (m > 0 ? 900 : 0)) {
+            show((cur + 1) % shots.length);
+          }
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+  vscrolls() {
+    document.querySelectorAll('[data-vscroll]').forEach((box) => {
+      if (box.__vs) return; box.__vs = true;
+      const track = box.querySelector('[data-vtrack]');
+      if (!track) return;
+      let over = false, wait = 0, y = box.scrollTop;
+      box.addEventListener('mouseenter', () => { over = true; });
+      box.addEventListener('mouseleave', () => { over = false; y = box.scrollTop; });
+      const tick = () => {
+        const m = box.scrollHeight - box.clientHeight;
+        if (over) { y = box.scrollTop; }
+        else if (m > 0) {
+          if (wait > 0) { wait--; }
+          else if (y >= m) { y = m; wait = 110; box.scrollTop = 0; y = 0; }
+          else { y = Math.min(m, y + 0.42); box.scrollTop = y; }
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+  fanStack() {
+    document.querySelectorAll('[data-fan]').forEach((box) => {
+      Array.prototype.slice.call(box.children).forEach((c) => {
+        const im = c.querySelector('img');
+        const z = getComputedStyle(c).zIndex;
+        if (im) { im.style.transition = 'opacity .45s ease'; im.__o = im.style.opacity || '1'; }
+        c.addEventListener('mouseenter', () => {
+          c.style.zIndex = '99';
+          if (im) im.style.opacity = '1';
+        });
+        c.addEventListener('mouseleave', () => {
+          c.style.zIndex = z;
+          if (im) im.style.opacity = im.__o;
+        });
+      });
+    });
+  }
+  stackCards() {
+    const cards = Array.prototype.slice.call(document.querySelectorAll('[data-stack]'));
+    if (cards.length < 2) return;
+    cards.sort((a, b) => (a.getBoundingClientRect().top + window.scrollY) - (b.getBoundingClientRect().top + window.scrollY));
+    const fit = () => {
+      cards.forEach((c, i) => {
+        const base = 124 + i * 32;
+        c.style.top = Math.min(base, window.innerHeight - c.offsetHeight - 24) + 'px';
+      });
+    };
+    const upd = () => {
+      cards.forEach((c, i) => {
+        const nxt = cards[i + 1];
+        if (!nxt) { c.style.transform = 'none'; c.style.opacity = '1'; return; }
+        const gap = nxt.getBoundingClientRect().top - c.getBoundingClientRect().top;
+        const span = c.offsetHeight;
+        const p = Math.max(0, Math.min(1, 1 - gap / span));
+        c.style.transform = 'scale(' + (1 - p * 0.05).toFixed(4) + ')';
+        c.style.opacity = (1 - p * 0.35).toFixed(3);
+      });
+    };
+    let raf = null;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = null; upd(); });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => { fit(); onScroll(); });
+    fit();
+    upd();
+  }
+  activeIndex() {
+    const links = Array.prototype.slice.call(document.querySelectorAll('[data-idx]'));
+    if (!links.length || typeof IntersectionObserver === 'undefined') return;
+    const set = (id) => links.forEach((l) => {
+      const on = l.getAttribute('data-idx') === id;
+      l.style.color = on ? '#2E3C61' : '#6E7683';
+      l.style.fontWeight = on ? '600' : '400';
+      l.style.borderLeftColor = on ? '#2E3C61' : 'transparent';
+    });
+    const io = new IntersectionObserver((es) => {
+      es.forEach((e) => { if (e.isIntersecting) set(e.target.id); });
+    }, { rootMargin: '-25% 0px -65% 0px' });
+    links.forEach((l) => {
+      const el = document.getElementById(l.getAttribute('data-idx'));
+      if (el) io.observe(el);
+    });
+  }
+  autoScroll() {
+    if (this._as) return;
+    this._as = true;
+    const start = (fr) => {
+      const win = fr.contentWindow, doc = fr.contentDocument;
+      if (!win || !doc || !doc.body) return false;
+      const max = () => Math.max(0, doc.documentElement.scrollHeight - win.innerHeight);
+      if (max() < 100) return false;
+      let y = 0, wait = 0, paused = false;
+      const wrap = fr.closest('[data-frame]') || fr.parentElement;
+      let taken = false;
+      wrap.addEventListener('mouseenter', () => { paused = true; });
+      wrap.addEventListener('mouseleave', () => { if (!taken) paused = false; });
+      doc.addEventListener('mouseover', () => { paused = true; });
+      doc.documentElement.addEventListener('mouseleave', () => { if (!taken) paused = false; });
+      ['click', 'keydown', 'touchstart'].forEach((ev) => {
+        doc.addEventListener(ev, () => {
+          taken = true; paused = true;
+          const cue = wrap.querySelector('[data-live-cue]') || (fr.closest('div[style*="overflow"]') || wrap).parentElement.querySelector('[data-live-cue]');
+          if (cue) cue.style.opacity = '0';
+        }, { passive: true });
+      });
+      const tick = () => {
+        if (!paused) {
+          const m = max();
+          if (y >= m) {
+            wait++;
+            if (wait > 90) { wait = 0; y = 0; }
+          } else {
+            y = Math.min(m, y + 1.2);
+          }
+          win.scrollTo(0, y);
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      return true;
+    };
+    document.querySelectorAll('[data-autopan]').forEach((img) => {
+      const box = img.parentElement;
+      let y = 0, wait = 0, paused = false;
+      box.addEventListener('mouseenter', () => { paused = true; });
+      box.addEventListener('mouseleave', () => { paused = false; });
+      const tick = () => {
+        if (paused) { y = box.scrollTop; }
+        else {
+          const m = Math.max(0, box.scrollHeight - box.clientHeight);
+          if (y >= m - 0.5) {
+            wait++;
+            if (wait > 80) { wait = 0; y = 0; box.scrollTop = 0; }
+          } else {
+            y = Math.min(m, y + 0.45);
+            box.scrollTop = y;
+          }
+        }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+    document.querySelectorAll('iframe[data-autoscroll]').forEach((fr) => {
+      let tries = 0;
+      const attempt = () => {
+        if (start(fr)) return;
+        if (tries++ < 60) setTimeout(attempt, 400);
+      };
+      fr.addEventListener('load', attempt);
+      attempt();
+    });
+  }
+  componentDidUpdate() { this.reveal(); }
+}
+</script>
+
+
+</body></html>
