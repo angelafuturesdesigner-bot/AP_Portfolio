@@ -50,6 +50,18 @@
   @keyframes trackFill { 0% { width: 0; } 100% { width: var(--w, 60%); } }
   @keyframes sweepLine { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
   @keyframes pulseRingLight { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.3); } 70% { box-shadow: 0 0 0 14px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
+  .kr { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border:1px solid #D6DDE8; border-radius:10px; background:#F7F9FC; margin:0 0 30px; }
+  .kr > div { padding:22px 24px; border-left:1px solid #D6DDE8; }
+  .kr > div:first-child { border-left:0; }
+  .kr-n { font-family:'Montserrat',sans-serif; font-size:30px; font-weight:600; color:#2E3C61; letter-spacing:-0.02em; line-height:1.1; margin-bottom:6px; }
+  .kr-l { font-size:14px; line-height:1.45; color:#3F4652; }
+  .nda-note { font-size:14px; line-height:1.6; color:#6E7683; margin:-10px 0 24px; max-width:760px; font-style:italic; }
+  @media (max-width:760px) {
+    .kr { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .kr > div:nth-child(3) { border-left:0; }
+    .kr > div:nth-child(n+3) { border-top:1px solid #D6DDE8; }
+    .kr-n { font-size:24px; }
+  }
 </style>
 
 </helmet>
@@ -128,7 +140,7 @@
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A5C8C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px;flex:none"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"></path></svg>
-            <div><div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8C9BBF;font-family:'Montserrat',sans-serif;font-weight:600;margin-bottom:4px">Now</div><div style="font-size:16px;color:#1C1F26">UX/UI Design Lead at NiEW</div></div>
+            <div><div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8C9BBF;font-family:'Montserrat',sans-serif;font-weight:600;margin-bottom:4px">Now</div><div style="font-size:16px;color:#1C1F26">Open to new roles · previously UX/UI Design Lead at NiEW</div></div>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A5C8C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px;flex:none"><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="3.6"></circle></svg>
@@ -620,7 +632,7 @@
                 <div style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.01em;line-height:1.3;color:#1C1F26">New Designers</div>
                 <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#8C9BBF;margin-top:8px">London · 2022</div>
               </div>
-              <p style="margin:0;font-size:16px;line-height:1.6;color:#3F4652;text-wrap:pretty">I had the honour of being chosen to participate at New Designers in London, where I have been awarded the Bureau Membership and Mentorship from Design District London Associate Price 2022.</p>
+              <p style="margin:0;font-size:16px;line-height:1.6;color:#3F4652;text-wrap:pretty">I had the honour of being chosen to participate at New Designers in London, where I have been awarded the Bureau Membership and Mentorship from Design District London Associate Prize 2022.</p>
             </div><div style="display:grid;height:100%;overflow:hidden;background:#DFE6F1"><img loading="lazy" decoding="async" src="assets/w-award-newdesigners.webp" alt="Angela receiving the Design District London award with the judging panel" onclick="{{ openLightbox }}" style="display:block;width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:transform .6s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.04)"></div>
           </div><div data-reveal="1" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,.61,.36,1),background .35s ease,box-shadow .35s ease;position:sticky;top:104px;z-index:3;height:440px;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);border-radius:18px;background:#F4F7FC;overflow:hidden" style-hover="background:#EDF1F7;box-shadow:0 34px 70px -52px rgba(28,31,38,.45)">
             <div style="display:grid;grid-template-rows:repeat(2,minmax(0,1fr));gap:0;height:100%;overflow:hidden;background:#DFE6F1"><img loading="lazy" decoding="async" src="assets/w-award-greengrads-stand.webp" alt="The Wastly display at Green Grads" onclick="{{ openLightbox }}" style="display:block;width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:transform .6s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.04)"><img loading="lazy" decoding="async" src="assets/w-award-greengrads-talk.webp" alt="Angela speaking at the Sustainable Future Theatre" onclick="{{ openLightbox }}" style="display:block;width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:transform .6s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.04)"></div><div style="display:flex;flex-direction:column;gap:16px;padding:clamp(26px,2.8vw,40px);min-width:0;overflow-y:auto;scrollbar-width:none">
@@ -772,6 +784,7 @@
             <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:30px">
               <span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A6A28;background:#F7EFE0;border-radius:100px;padding:7px 14px">NDA · VISUALS &amp; CONTENTS ANONYMISED</span>
             </div>
+            <div class="kr" data-reveal=""><div><div class="kr-n">~1,000</div><div class="kr-l">interview notes from field research in China and Italy</div></div><div><div class="kr-n">130 → 20</div><div class="kr-l">candidate features prioritised with the client</div></div><div><div class="kr-n">4 sprints</div><div class="kr-l">from approved concept to final UI</div></div><div><div class="kr-n">1st</div><div class="kr-l">presentation: visual concept approved</div></div></div>
             <div style="display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:32px;align-items:center;border-top:1px solid #D6DDE8;border-bottom:1px solid #D6DDE8;padding:24px 0;margin-bottom:44px" data-reveal="">
               <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C">Skills developed</div>
               <div style="display:flex;flex-wrap:wrap;gap:9px">
@@ -790,7 +803,7 @@
               </div>
               <div>
                 <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:12px">Outcome</div>
-                <p style="margin: 0; font-size: 18px; line-height: 1.7; color: #040404; position: relative">A clear understanding of their active digital services, thanks to the<b> service journey </b>we built — which became the client's own <b>decision-making tool </b>for what to keep, drop, or develop. The platform's <b>visual concept </b>was shaped around their brand identity, alongside the design of <b>20 new features</b> across four sprints, with the UI signed off through consistently positive feedback.</p>
+                <p style="margin: 0; font-size: 18px; line-height: 1.7; color: #040404; position: relative">The <b>service journey</b> we built became the client's own <b>decision-making tool</b> for which services to keep, drop or develop. From ~130 candidate features, <b>20 were prioritised with the client</b> and designed end to end across <b>four sprints</b>. The <b>visual concept</b>, built on their brand identity, was <b>approved at the first presentation</b>, and the UI was signed off sprint by sprint.</p>
               </div>
             </div>
             <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
@@ -825,6 +838,7 @@
             </div>
             
             <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:22px">The process</div>
+            <p class="nda-note">The working artefacts (research boards, journeys, wireframes) are under NDA and can't be shown, so each step states what I did and what it produced.</p>
             <div style="display:grid;grid-template-columns:repeat(4,1fr)" data-reveal="">
               <div style="padding-right:32px">
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
@@ -832,7 +846,7 @@
                   <span style="flex:1;height:1px;background:#D6DDE8"></span>
                 </div>
                 <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Field research</div>
-                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">UX research on site to interview the client’s largest customers in China, and extended the study across Italy.</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Interviewed the client’s largest customers on site in China, then extended the study to customers in Italy.</div>
               </div>
               <div style="padding-right:32px">
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
@@ -840,7 +854,7 @@
                   <span style="flex:1;height:1px;background:#D6DDE8"></span>
                 </div>
                 <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Data into direction</div>
-                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Elaboration of ~1000 interview notes, generation of ~ 100 insights and ~130 product features using AI</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Structured ~1,000 interview notes in Airtable and used AI to synthesise them into ~100 insights and ~130 candidate features.</div>
               </div>
               <div style="padding-right:32px">
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
@@ -848,7 +862,7 @@
                   <span style="flex:1;height:1px;background:#D6DDE8"></span>
                 </div>
                 <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Map and prioritise</div>
-                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">User Journey mapping of their digital services as decision making tool for the client.&nbsp; Rating product features with the client to reach the ~20 essentials.</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Mapped the journey of every digital service as a decision tool for the client, then scored the ~130 features with them down to 20 essentials.</div>
               </div>
               <div style="padding-right:0px">
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
@@ -856,7 +870,7 @@
                   <span style="flex:1;height:1px;background:#D6DDE8"></span>
                 </div>
                 <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Concept and UI screens</div>
-                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Concept approved at first presentation. Design of 20 features chosen through four sprints of requirements collection, design, review, redesign.</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Concept approved at the first presentation. 20 features designed across four sprints, each running requirements, design, review and iteration.</div>
               </div>
             </div>
             <div style="margin-top:48px;background:linear-gradient(140deg,#2E3C61 0%,#4B5D8E 100%);border-radius:10px;padding:52px 56px;color:#fff;position:relative;overflow:hidden">
@@ -885,6 +899,7 @@
             <div style="font-family: 'Montserrat',sans-serif; font-size: 32px; font-weight: 600; color: #8C9BBF; letter-spacing: .14em; margin-bottom: 18px">02</div>
             <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px"><div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px"><h3 style="margin: 0 0 20px; font-family: 'Montserrat',sans-serif; font-size: 40px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; color: #1C1F26; max-width: 820px">A new Design System - from fragmented design to one coherent digital ecosystem</h3></div></div>
             <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:30px"><span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A6A28;background:#F7EFE0;border-radius:100px;padding:7px 14px">NDA · VISUALS &amp; CONTENTS ANONYMISED</span></div>
+            <div class="kr" data-reveal=""><div><div class="kr-n">76</div><div class="kr-l">components in the product library, built on a ~127-component core system</div></div><div><div class="kr-n">14</div><div class="kr-l">teams using the library org-wide</div></div><div><div class="kr-n">~750</div><div class="kr-l">component insertions every week</div></div><div><div class="kr-n">3</div><div class="kr-l">breakpoints designed: desktop, tablet, mobile</div></div></div>
             <div style="display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:32px;align-items:center;border-top:1px solid #D6DDE8;border-bottom:1px solid #D6DDE8;padding:24px 0;margin-bottom:44px" data-reveal="">
               <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C">Skills developed</div>
               <div style="display:flex;flex-wrap:wrap;gap:9px">
@@ -904,7 +919,7 @@
               </div>
               <div>
                 <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:12px">Outcome</div>
-                <p style="margin:0;font-size:18px;line-height:1.7;color:#3F4652">I rebuilt the design system on <b>shared variables and foundations</b>, keeping <b>design and development consistent</b>. <b>The product library counts 76 components, built on the core components of the main design system I worked on (around 127 components).</b> I also designed new features across <b>desktop, tablet and mobile</b>, <b>aligning UX and UI</b> with the client's other product into one coherent ecosystem.</p>
+                <p style="margin:0;font-size:18px;line-height:1.7;color:#3F4652">I rebuilt the design system on <b>shared variables and foundations</b>, keeping <b>design and development consistent</b>. The product library grew to <b>76 components</b>, built on the core system (~127 components), and is now <b>used by 14 teams org-wide with ~750 insertions a week</b>. I also designed new features across <b>desktop, tablet and mobile</b>, <b>aligning UX and UI</b> with the client's other product into one coherent ecosystem.</p>
               </div>
             </div>
             <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
@@ -947,6 +962,7 @@
             </div>
             
             <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:22px">The process</div>
+            <p class="nda-note">The working artefacts (research boards, journeys, wireframes) are under NDA and can't be shown, so each step states what I did and what it produced.</p>
             <div style="display:grid;grid-template-columns:repeat(4,1fr)" data-reveal="">
               <div style="padding-right:32px">
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
@@ -954,7 +970,7 @@
                   <span style="flex:1;height:1px;background:#D6DDE8"></span>
                 </div>
                 <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Rebuilt the design system</div>
-                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Managed independently the creation of the new design system library from zero: new components, connected shared variables, and scalable foundations.</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Built the new component library from zero, on its own: new components, shared variables and scalable foundations.</div>
               </div>
               <div style="padding-right:32px">
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
@@ -1007,6 +1023,7 @@
             <div style="font-family: 'Montserrat',sans-serif; font-size: 32px; font-weight: 600; color: #8C9BBF; letter-spacing: .14em; margin-bottom: 18px">03</div>
             <h3 style="margin:0 0 20px;font-family:'Montserrat',sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.025em;line-height:1.15;color:#1C1F26;max-width:820px">Project Management - recovering a delayed development programme</h3>
             <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:30px"><span style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8A6A28;background:#F7EFE0;border-radius:100px;padding:7px 14px">NDA · VISUALS &amp; CONTENTS ANONYMISED</span></div>
+            <div class="kr" data-reveal=""><div><div class="kr-n">35%</div><div class="kr-l">behind schedule when I took over delivery</div></div><div><div class="kr-n">~10</div><div class="kr-l">developers led week by week</div></div><div><div class="kr-n">1M+</div><div class="kr-l">active users of the platform</div></div><div><div class="kr-n">3 levels</div><div class="kr-l">of delay tracked live: task, developer, sprint</div></div></div>
             <div style="display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:32px;align-items:center;border-top:1px solid #D6DDE8;border-bottom:1px solid #D6DDE8;padding:24px 0;margin-bottom:44px" data-reveal="">
               <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C">Skills developed</div>
               <div style="display:flex;flex-wrap:wrap;gap:9px">
@@ -1023,7 +1040,7 @@
               </div>
               <div>
                 <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:12px">Outcome</div>
-                <p style="margin:0;font-size:18px;line-height:1.7;color:#3F4652">I designed a dedicated <b>Airtable database, connected to Claude,</b> that captures task updates, deadlines and workload automatically and calculates delay — by cause — for every task, developer and sprint. Purpose-built <b>Airtable interfaces</b> turn this into a live programme-health view for the client: overall delay, root causes and the mitigation proposed for each. Delay is now measured and explained systematically, not reported anecdotally.</p>
+                <p style="margin:0;font-size:18px;line-height:1.7;color:#3F4652">I designed a dedicated <b>Airtable database, connected to Claude,</b> that captures task updates, deadlines and workload automatically and calculates delay — by cause — for every task, developer and sprint. Purpose-built <b>Airtable interfaces</b> turn this into a live programme-health view for the client: overall delay, root causes and the mitigation proposed for each. It replaced weeks of manual data work: delay is now measured and explained systematically, not reported anecdotally.</p>
               </div>
             </div>
             <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
@@ -1057,6 +1074,7 @@
               </figure>
             </div>
             <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#4A5C8C;margin-bottom:22px">The process</div>
+            <p class="nda-note">The working artefacts (research boards, journeys, wireframes) are under NDA and can't be shown, so each step states what I did and what it produced.</p>
             <div style="display:grid;grid-template-columns:repeat(4,1fr)" data-reveal="">
               <div style="padding-right:32px">
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
@@ -1080,7 +1098,7 @@
                   <span style="flex:1;height:1px;background:#D6DDE8"></span>
                 </div>
                 <div style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:18px;color:#1C1F26;margin-bottom:8px">Led the team</div>
-                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Ran the team directly holding developers accountable to their commitments week by week.</div>
+                <div style="font-size:15px;line-height:1.6;color:#6E7683;text-wrap:pretty">Ran the team directly, holding developers accountable to their commitments week by week.</div>
               </div>
               <div style="padding-right:0px">
                 <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
